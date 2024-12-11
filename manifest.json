@@ -1,0 +1,15 @@
+{
+  "short_name": "PikminTracker",
+  "name": "Pikmin Bloom Tracker",
+  "icons": [
+    {
+      "src": "icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "theme_color": "#4caf50"
+}

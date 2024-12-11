@@ -1,0 +1,270 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f8ff;
+}
+
+header {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#language-selector {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: white;
+}
+
+#language-selector option {
+  background: #fff;
+  color: #333;
+}
+
+table {
+  width: 95%;
+  max-width: 1200px;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 20px auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+th {
+  background: #4caf50;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 2px solid #45a049;
+}
+
+th:first-child {
+  border-top-left-radius: 8px;
+}
+
+th:last-child {
+  border-top-right-radius: 8px;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}
+
+/* 피크민 색상별 스타일 */
+th:nth-child(2) { 
+  background-color: #ff4444; 
+  color: white;
+} /* Red */
+
+th:nth-child(3) { 
+  background-color: #ffeb3b; 
+  color: #333;
+} /* Yellow */
+
+th:nth-child(4) { 
+  background-color: #2196f3; 
+  color: white;
+} /* Blue */
+
+th:nth-child(5) { 
+  background-color: #9c27b0; 
+  color: white;
+} /* Purple */
+
+th:nth-child(6) { 
+  background-color: #f5f5f5; 
+  color: #333;
+} /* White */
+
+th:nth-child(7) { 
+  background-color: #ff80ab; 
+  color: white;
+} /* Pink */
+
+th:nth-child(8) { 
+  background-color: #9e9e9e; 
+  color: white;
+} /* Gray */
+
+input[type="checkbox"] {
+  transform: scale(1.5);
+  cursor: pointer;
+  accent-color: #4caf50;
+}
+
+input[type="checkbox"]:checked {
+  animation: pulse 0.3s ease-in-out;
+}
+
+/* 체크박스 색상 커스터마이징 */
+input[data-type^="red-"] { accent-color: #ff4444; }
+input[data-type^="yellow-"] { accent-color: #ffd600; }
+input[data-type^="blue-"] { accent-color: #2196f3; }
+input[data-type^="purple-"] { accent-color: #9c27b0; }
+input[data-type^="white-"] { accent-color: #f5f5f5; }
+input[data-type^="pink-"] { accent-color: #ff80ab; }
+input[data-type^="gray-"] { accent-color: #9e9e9e; }
+
+/* 애니메이션 효과 */
+@keyframes pulse {
+  0% { transform: scale(1.5); }
+  50% { transform: scale(1.7); }
+  100% { transform: scale(1.5); }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+  
+  th, td {
+    padding: 8px 4px;
+  }
+  
+  input[type="checkbox"] {
+    transform: scale(1.2);
+  }
+  
+  #language-selector {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin-bottom: 1rem;
+  }
+}
+
+/* 다크 모드 지원 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+    color: #fff;
+  }
+  
+  table {
+    background: #2d2d2d;
+  }
+  
+  td {
+    border-bottom: 1px solid #404040;
+  }
+  
+  tr:hover {
+    background-color: #3d3d3d;
+  }
+}
+
+/* 완료된 줄의 스타일 */
+tr.completed {
+  background-color: #e8f5e9;  /* 연한 초록색 배경 */
+  transition: background-color 0.3s ease;  /* 부드러운 전환 효과 */
+}
+
+tr.completed td {
+  color: #2e7d32;  /* 진한 초록색 텍스트 */
+}
+
+/* 희귀 종류 행 스타일 */
+tr[data-rare="true"] {
+  position: relative;
+  background-color: #fff3e0 !important;
+}
+
+tr[data-rare="true"] td:first-child {
+  color: #ff6d00 !important;
+  font-weight: bold;
+}
+
+tr[data-rare="true"] td:first-child::before {
+  content: '★';
+  margin-right: 5px;
+  color: #ffa000;
+}
+
+/* 희귀 종류가 완료되었을 때 */
+tr[data-rare="true"].completed {
+  background-color: #ffe0b2 !important;
+}
+
+tr[data-rare="true"].completed td:first-child {
+  color: #e65100 !important;
+}
+
+/* 컨트롤 버튼 영역 */
+.controls {
+    margin-bottom: 20px;
+    text-align: right;
+}
+
+/* 초기화 버튼 스타일 */
+.reset-button {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.reset-button:hover {
+    background-color: #d32f2f;
+}
+
+/* 체크박스 카운트 스타일 */
+.checkbox-count {
+    color: #666;
+    display: inline-block;
+    margin-top: 3px;
+}
+
+/* 모두 체크되었을 때 스타일 */
+tr.completed .checkbox-count {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+/* 검색 입력창 스타일 */
+.search-input {
+    padding: 8px 12px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 200px;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 2px rgba(33,150,243,0.2);
+}
+
+/* 숨겨진 행 스타일 */
+tr.hidden {
+    display: none;
+}
+
+/* tfoot는 항상 표시 */
+tfoot tr {
+    display: table-row !important;
+}

@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pikmin Bloom Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <select id="language-selector">
+        <option value="ko">한국어</option>
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh-CN">简体中文</option>
+        <option value="zh-TW">繁體中文</option>
+      </select>
+      <h1 data-i18n="title">Pikmin Bloom Tracker</h1>
+    </header>
+    <main>
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="종류 검색..." class="search-input">
+        <button id="resetButton" class="reset-button" data-i18n="resetButton">모든 체크박스 초기화</button>
+      </div>
+      <table id="pikmin-table">
+        <thead>
+          <tr>
+            <th data-i18n="type">Type</th>
+            <th data-i18n="red">Red</th>
+            <th data-i18n="yellow">Yellow</th>
+            <th data-i18n="blue">Blue</th>
+            <th data-i18n="purple">Purple</th>
+            <th data-i18n="white">White</th>
+            <th data-i18n="pink">Pink</th>
+            <th data-i18n="gray">Gray</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span data-i18n="dessert1">甜點店1-馬卡龍</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-dessert1" /></td>
+            <td><input type="checkbox" data-type="yellow-dessert1" /></td>
+            <td><input type="checkbox" data-type="blue-dessert1" /></td>
+            <td><input type="checkbox" data-type="purple-dessert1" /></td>
+            <td><input type="checkbox" data-type="white-dessert1" /></td>
+            <td><input type="checkbox" data-type="pink-dessert1" /></td>
+            <td><input type="checkbox" data-type="gray-dessert1" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="dessert2">甜點店2-甜甜圈</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-dessert2" /></td>
+            <td><input type="checkbox" data-type="yellow-dessert2" /></td>
+            <td><input type="checkbox" data-type="blue-dessert2" /></td>
+            <td><input type="checkbox" data-type="purple-dessert2" /></td>
+            <td><input type="checkbox" data-type="white-dessert2" /></td>
+            <td><input type="checkbox" data-type="pink-dessert2" /></td>
+            <td><input type="checkbox" data-type="gray-dessert2" /></td>
+          </tr>
+          <!-- 영화관 -->
+          <tr>
+            <td>
+              <span data-i18n="cinema">電影院</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-cinema" /></td>
+            <td><input type="checkbox" data-type="yellow-cinema" /></td>
+            <td><input type="checkbox" data-type="blue-cinema" /></td>
+            <td><input type="checkbox" data-type="purple-cinema" /></td>
+            <td><input type="checkbox" data-type="white-cinema" /></td>
+            <td><input type="checkbox" data-type="pink-cinema" /></td>
+            <td><input type="checkbox" data-type="gray-cinema" /></td>
+          </tr>
+          <!-- 약국 -->
+          <tr>
+            <td>
+              <span data-i18n="pharmacy">藥局</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-pharmacy" /></td>
+            <td><input type="checkbox" data-type="yellow-pharmacy" /></td>
+            <td><input type="checkbox" data-type="blue-pharmacy" /></td>
+            <td><input type="checkbox" data-type="purple-pharmacy" /></td>
+            <td><input type="checkbox" data-type="white-pharmacy" /></td>
+            <td><input type="checkbox" data-type="pink-pharmacy" /></td>
+            <td><input type="checkbox" data-type="gray-pharmacy" /></td>
+          </tr>
+          <!-- 동물원 -->
+          <tr>
+            <td>
+              <span data-i18n="zoo">動物園</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-zoo" /></td>
+            <td><input type="checkbox" data-type="yellow-zoo" /></td>
+            <td><input type="checkbox" data-type="blue-zoo" /></td>
+            <td><input type="checkbox" data-type="purple-zoo" /></td>
+            <td><input type="checkbox" data-type="white-zoo" /></td>
+            <td><input type="checkbox" data-type="pink-zoo" /></td>
+            <td><input type="checkbox" data-type="gray-zoo" /></td>
+          </tr>
+          <!-- 숲 -->
+          <tr>
+            <td>
+              <span data-i18n="forest1">森林1 - 鍬形蟲</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-forest1" /></td>
+            <td><input type="checkbox" data-type="yellow-forest1" /></td>
+            <td><input type="checkbox" data-type="blue-forest1" /></td>
+            <td><input type="checkbox" data-type="purple-forest1" /></td>
+            <td><input type="checkbox" data-type="white-forest1" /></td>
+            <td><input type="checkbox" data-type="pink-forest1" /></td>
+            <td><input type="checkbox" data-type="gray-forest1" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="forest2">森林2 - 橡栗</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-forest2" /></td>
+            <td><input type="checkbox" data-type="yellow-forest2" /></td>
+            <td><input type="checkbox" data-type="blue-forest2" /></td>
+            <td><input type="checkbox" data-type="purple-forest2" /></td>
+            <td><input type="checkbox" data-type="white-forest2" /></td>
+            <td><input type="checkbox" data-type="pink-forest2" /></td>
+            <td><input type="checkbox" data-type="gray-forest2" /></td>
+          </tr>
+          <!-- 물가 -->
+          <tr>
+            <td>
+              <span data-i18n="waterside">水邊</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-waterside" /></td>
+            <td><input type="checkbox" data-type="yellow-waterside" /></td>
+            <td><input type="checkbox" data-type="blue-waterside" /></td>
+            <td><input type="checkbox" data-type="purple-waterside" /></td>
+            <td><input type="checkbox" data-type="white-waterside" /></td>
+            <td><input type="checkbox" data-type="pink-waterside" /></td>
+            <td><input type="checkbox" data-type="gray-waterside" /></td>
+          </tr>
+          <tr data-rare="true">
+            <td>
+              <span data-i18n="rareWaterside">水邊 - 稀有</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-rareWaterside" /></td>
+            <td><input type="checkbox" data-type="yellow-rareWaterside" /></td>
+            <td><input type="checkbox" data-type="blue-rareWaterside" /></td>
+            <td><input type="checkbox" data-type="purple-rareWaterside" /></td>
+            <td><input type="checkbox" data-type="white-rareWaterside" /></td>
+            <td><input type="checkbox" data-type="pink-rareWaterside" /></td>
+            <td><input type="checkbox" data-type="gray-rareWaterside" /></td>
+          </tr>
+          <!-- 우체국 -->
+          <tr>
+            <td>
+              <span data-i18n="postOffice">郵局</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-postOffice" /></td>
+            <td><input type="checkbox" data-type="yellow-postOffice" /></td>
+            <td><input type="checkbox" data-type="blue-postOffice" /></td>
+            <td><input type="checkbox" data-type="purple-postOffice" /></td>
+            <td><input type="checkbox" data-type="white-postOffice" /></td>
+            <td><input type="checkbox" data-type="pink-postOffice" /></td>
+            <td><input type="checkbox" data-type="gray-postOffice" /></td>
+          </tr>
+          <!-- 미술관 -->
+          <tr>
+            <td>
+              <span data-i18n="artGallery">美術館</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-artGallery" /></td>
+            <td><input type="checkbox" data-type="yellow-artGallery" /></td>
+            <td><input type="checkbox" data-type="blue-artGallery" /></td>
+            <td><input type="checkbox" data-type="purple-artGallery" /></td>
+            <td><input type="checkbox" data-type="white-artGallery" /></td>
+            <td><input type="checkbox" data-type="pink-artGallery" /></td>
+            <td><input type="checkbox" data-type="gray-artGallery" /></td>
+          </tr>
+          <!-- 공항 -->
+          <tr>
+            <td>
+              <span data-i18n="airport">機場</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-airport" /></td>
+            <td><input type="checkbox" data-type="yellow-airport" /></td>
+            <td><input type="checkbox" data-type="blue-airport" /></td>
+            <td><input type="checkbox" data-type="purple-airport" /></td>
+            <td><input type="checkbox" data-type="white-airport" /></td>
+            <td><input type="checkbox" data-type="pink-airport" /></td>
+            <td><input type="checkbox" data-type="gray-airport" /></td>
+          </tr>
+          <!-- 역 -->
+          <tr>
+            <td>
+              <span data-i18n="station1">車站1 - 電車</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-station1" /></td>
+            <td><input type="checkbox" data-type="yellow-station1" /></td>
+            <td><input type="checkbox" data-type="blue-station1" /></td>
+            <td><input type="checkbox" data-type="purple-station1" /></td>
+            <td><input type="checkbox" data-type="white-station1" /></td>
+            <td><input type="checkbox" data-type="pink-station1" /></td>
+            <td><input type="checkbox" data-type="gray-station1" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="station2">車站2 - 車票</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-station2" /></td>
+            <td><input type="checkbox" data-type="yellow-station2" /></td>
+            <td><input type="checkbox" data-type="blue-station2" /></td>
+            <td><input type="checkbox" data-type="purple-station2" /></td>
+            <td><input type="checkbox" data-type="white-station2" /></td>
+            <td><input type="checkbox" data-type="pink-station2" /></td>
+            <td><input type="checkbox" data-type="gray-station2" /></td>
+          </tr>
+          <!-- 해변 -->
+          <tr>
+            <td>
+              <span data-i18n="beach">海灘</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-beach" /></td>
+            <td><input type="checkbox" data-type="yellow-beach" /></td>
+            <td><input type="checkbox" data-type="blue-beach" /></td>
+            <td><input type="checkbox" data-type="purple-beach" /></td>
+            <td><input type="checkbox" data-type="white-beach" /></td>
+            <td><input type="checkbox" data-type="pink-beach" /></td>
+            <td><input type="checkbox" data-type="gray-beach" /></td>
+          </tr>
+          <!-- 햄버거 가게 -->
+          <tr>
+            <td>
+              <span data-i18n="burgerShop">漢堡店</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-burgerShop" /></td>
+            <td><input type="checkbox" data-type="yellow-burgerShop" /></td>
+            <td><input type="checkbox" data-type="blue-burgerShop" /></td>
+            <td><input type="checkbox" data-type="purple-burgerShop" /></td>
+            <td><input type="checkbox" data-type="white-burgerShop" /></td>
+            <td><input type="checkbox" data-type="pink-burgerShop" /></td>
+            <td><input type="checkbox" data-type="gray-burgerShop" /></td>
+          </tr>
+          <!-- 편의점 -->
+          <tr>
+            <td>
+              <span data-i18n="convenienceStore1">便利店1 - 瓶蓋</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-convenienceStore1" /></td>
+            <td>
+              <input type="checkbox" data-type="yellow-convenienceStore1" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="blue-convenienceStore1" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="purple-convenienceStore1" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="white-convenienceStore1" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="pink-convenienceStore1" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="gray-convenienceStore1" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="convenienceStore2">便利店2 - 零食</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-convenienceStore2" /></td>
+            <td>
+              <input type="checkbox" data-type="yellow-convenienceStore2" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="blue-convenienceStore2" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="purple-convenienceStore2" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="white-convenienceStore2" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="pink-convenienceStore2" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="gray-convenienceStore2" />
+            </td>
+          </tr>
+          <!-- 슈퍼마켓 -->
+          <tr>
+            <td>
+              <span data-i18n="supermarket1">超市1 - 蘑菇</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-supermarket1" /></td>
+            <td><input type="checkbox" data-type="yellow-supermarket1" /></td>
+            <td><input type="checkbox" data-type="blue-supermarket1" /></td>
+            <td><input type="checkbox" data-type="purple-supermarket1" /></td>
+            <td><input type="checkbox" data-type="white-supermarket1" /></td>
+            <td><input type="checkbox" data-type="pink-supermarket1" /></td>
+            <td><input type="checkbox" data-type="gray-supermarket1" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="supermarket2">超市2 - 香蕉</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-supermarket2" /></td>
+            <td><input type="checkbox" data-type="yellow-supermarket2" /></td>
+            <td><input type="checkbox" data-type="blue-supermarket2" /></td>
+            <td><input type="checkbox" data-type="purple-supermarket2" /></td>
+            <td><input type="checkbox" data-type="white-supermarket2" /></td>
+            <td><input type="checkbox" data-type="pink-supermarket2" /></td>
+            <td><input type="checkbox" data-type="gray-supermarket2" /></td>
+          </tr>
+          <!-- 빵집 -->
+          <tr>
+            <td>
+              <span data-i18n="bakery">麵包店</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-bakery" /></td>
+            <td><input type="checkbox" data-type="yellow-bakery" /></td>
+            <td><input type="checkbox" data-type="blue-bakery" /></td>
+            <td><input type="checkbox" data-type="purple-bakery" /></td>
+            <td><input type="checkbox" data-type="white-bakery" /></td>
+            <td><input type="checkbox" data-type="pink-bakery" /></td>
+            <td><input type="checkbox" data-type="gray-bakery" /></td>
+          </tr>
+          <tr data-rare="true">
+            <td>
+              <span data-i18n="rareBakery">麵包店 - 稀有</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-rareBakery" /></td>
+            <td><input type="checkbox" data-type="yellow-rareBakery" /></td>
+            <td><input type="checkbox" data-type="blue-rareBakery" /></td>
+            <td><input type="checkbox" data-type="purple-rareBakery" /></td>
+            <td><input type="checkbox" data-type="white-rareBakery" /></td>
+            <td><input type="checkbox" data-type="pink-rareBakery" /></td>
+            <td><input type="checkbox" data-type="gray-rareBakery" /></td>
+          </tr>
+          <!-- 미용실 -->
+          <tr>
+            <td>
+              <span data-i18n="beautySalon">美容院</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-beautySalon" /></td>
+            <td><input type="checkbox" data-type="yellow-beautySalon" /></td>
+            <td><input type="checkbox" data-type="blue-beautySalon" /></td>
+            <td><input type="checkbox" data-type="purple-beautySalon" /></td>
+            <td><input type="checkbox" data-type="white-beautySalon" /></td>
+            <td><input type="checkbox" data-type="pink-beautySalon" /></td>
+            <td><input type="checkbox" data-type="gray-beautySalon" /></td>
+          </tr>
+          <tr data-rare="true">
+            <td>
+              <span data-i18n="rareBeautySalon">美容院 - 稀有</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-rareBeautySalon" /></td>
+            <td>
+              <input type="checkbox" data-type="yellow-rareBeautySalon" />
+            </td>
+            <td><input type="checkbox" data-type="blue-rareBeautySalon" /></td>
+            <td>
+              <input type="checkbox" data-type="purple-rareBeautySalon" />
+            </td>
+            <td><input type="checkbox" data-type="white-rareBeautySalon" /></td>
+            <td><input type="checkbox" data-type="pink-rareBeautySalon" /></td>
+            <td><input type="checkbox" data-type="gray-rareBeautySalon" /></td>
+          </tr>
+          <!-- 옷가게 -->
+          <tr>
+            <td>
+              <span data-i18n="clothingStore">服裝店</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-clothingStore" /></td>
+            <td><input type="checkbox" data-type="yellow-clothingStore" /></td>
+            <td><input type="checkbox" data-type="blue-clothingStore" /></td>
+            <td><input type="checkbox" data-type="purple-clothingStore" /></td>
+            <td><input type="checkbox" data-type="white-clothingStore" /></td>
+            <td><input type="checkbox" data-type="pink-clothingStore" /></td>
+            <td><input type="checkbox" data-type="gray-clothingStore" /></td>
+          </tr>
+          <!-- 공원 -->
+          <tr>
+            <td>
+              <span data-i18n="park">公園</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-park" /></td>
+            <td><input type="checkbox" data-type="yellow-park" /></td>
+            <td><input type="checkbox" data-type="blue-park" /></td>
+            <td><input type="checkbox" data-type="purple-park" /></td>
+            <td><input type="checkbox" data-type="white-park" /></td>
+            <td><input type="checkbox" data-type="pink-park" /></td>
+            <td><input type="checkbox" data-type="gray-park" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="luckyClover">公園 - 四葉幸運草</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-luckyClover" /></td>
+            <td><input type="checkbox" data-type="yellow-luckyClover" /></td>
+            <td><input type="checkbox" data-type="blue-luckyClover" /></td>
+            <td><input type="checkbox" data-type="purple-luckyClover" /></td>
+            <td><input type="checkbox" data-type="white-luckyClover" /></td>
+            <td><input type="checkbox" data-type="pink-luckyClover" /></td>
+            <td><input type="checkbox" data-type="gray-luckyClover" /></td>
+          </tr>
+          <!-- 도서관 -->
+          <tr>
+            <td>
+              <span data-i18n="library">圖書館</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-library" /></td>
+            <td><input type="checkbox" data-type="yellow-library" /></td>
+            <td><input type="checkbox" data-type="blue-library" /></td>
+            <td><input type="checkbox" data-type="purple-library" /></td>
+            <td><input type="checkbox" data-type="white-library" /></td>
+            <td><input type="checkbox" data-type="pink-library" /></td>
+            <td><input type="checkbox" data-type="gray-library" /></td>
+          </tr>
+          <!-- 길가 -->
+          <tr>
+            <td>
+              <span data-i18n="roadside1">路邊1</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-roadside1" /></td>
+            <td><input type="checkbox" data-type="yellow-roadside1" /></td>
+            <td><input type="checkbox" data-type="blue-roadside1" /></td>
+            <td><input type="checkbox" data-type="purple-roadside1" /></td>
+            <td><input type="checkbox" data-type="white-roadside1" /></td>
+            <td><input type="checkbox" data-type="pink-roadside1" /></td>
+            <td><input type="checkbox" data-type="gray-roadside1" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="roadside2">路邊2</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-roadside2" /></td>
+            <td><input type="checkbox" data-type="yellow-roadside2" /></td>
+            <td><input type="checkbox" data-type="blue-roadside2" /></td>
+            <td><input type="checkbox" data-type="purple-roadside2" /></td>
+            <td><input type="checkbox" data-type="white-roadside2" /></td>
+            <td><input type="checkbox" data-type="pink-roadside2" /></td>
+            <td><input type="checkbox" data-type="gray-roadside2" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="roadside3">路邊3</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-roadside3" /></td>
+            <td><input type="checkbox" data-type="yellow-roadside3" /></td>
+            <td><input type="checkbox" data-type="blue-roadside3" /></td>
+            <td><input type="checkbox" data-type="purple-roadside3" /></td>
+            <td><input type="checkbox" data-type="white-roadside3" /></td>
+            <td><input type="checkbox" data-type="pink-roadside3" /></td>
+            <td><input type="checkbox" data-type="gray-roadside3" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="roadside4">路邊4(金幣)</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-roadside4" /></td>
+            <td><input type="checkbox" data-type="yellow-roadside4" /></td>
+            <td><input type="checkbox" data-type="blue-roadside4" /></td>
+            <td><input type="checkbox" data-type="purple-roadside4" /></td>
+            <td><input type="checkbox" data-type="white-roadside4" /></td>
+            <td><input type="checkbox" data-type="pink-roadside4" /></td>
+            <td><input type="checkbox" data-type="gray-roadside4" /></td>
+          </tr>
+          <!-- 스시 레스토랑 -->
+          <tr>
+            <td>
+              <span data-i18n="sushiRestaurant">壽司餐廳</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-sushiRestaurant" /></td>
+            <td>
+              <input type="checkbox" data-type="yellow-sushiRestaurant" />
+            </td>
+            <td><input type="checkbox" data-type="blue-sushiRestaurant" /></td>
+            <td>
+              <input type="checkbox" data-type="purple-sushiRestaurant" />
+            </td>
+            <td><input type="checkbox" data-type="white-sushiRestaurant" /></td>
+            <td><input type="checkbox" data-type="pink-sushiRestaurant" /></td>
+            <td><input type="checkbox" data-type="gray-sushiRestaurant" /></td>
+          </tr>
+          <!-- 언덕 -->
+          <tr>
+            <td>
+              <span data-i18n="hill">山丘</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-hill" /></td>
+            <td><input type="checkbox" data-type="yellow-hill" /></td>
+            <td><input type="checkbox" data-type="blue-hill" /></td>
+            <td><input type="checkbox" data-type="purple-hill" /></td>
+            <td><input type="checkbox" data-type="white-hill" /></td>
+            <td><input type="checkbox" data-type="pink-hill" /></td>
+            <td><input type="checkbox" data-type="gray-hill" /></td>
+          </tr>
+          <!-- 체육관 -->
+          <tr>
+            <td>
+              <span data-i18n="gym">體育館</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-gym" /></td>
+            <td><input type="checkbox" data-type="yellow-gym" /></td>
+            <td><input type="checkbox" data-type="blue-gym" /></td>
+            <td><input type="checkbox" data-type="purple-gym" /></td>
+            <td><input type="checkbox" data-type="white-gym" /></td>
+            <td><input type="checkbox" data-type="pink-gym" /></td>
+            <td><input type="checkbox" data-type="gray-gym" /></td>
+          </tr>
+          <!-- 비 오는 날 -->
+          <tr>
+            <td>
+              <span data-i18n="rainy1">雨天1</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-rainy1" /></td>
+            <td><input type="checkbox" data-type="yellow-rainy1" /></td>
+            <td><input type="checkbox" data-type="blue-rainy1" /></td>
+            <td><input type="checkbox" data-type="purple-rainy1" /></td>
+            <td><input type="checkbox" data-type="white-rainy1" /></td>
+            <td><input type="checkbox" data-type="pink-rainy1" /></td>
+            <td><input type="checkbox" data-type="gray-rainy1" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="rainy2">雨天2</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-rainy2" /></td>
+            <td><input type="checkbox" data-type="yellow-rainy2" /></td>
+            <td><input type="checkbox" data-type="blue-rainy2" /></td>
+            <td><input type="checkbox" data-type="purple-rainy2" /></td>
+            <td><input type="checkbox" data-type="white-rainy2" /></td>
+            <td><input type="checkbox" data-type="pink-rainy2" /></td>
+            <td><input type="checkbox" data-type="gray-rainy2" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="rainy3">雨天3</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-rainy3" /></td>
+            <td><input type="checkbox" data-type="yellow-rainy3" /></td>
+            <td><input type="checkbox" data-type="blue-rainy3" /></td>
+            <td><input type="checkbox" data-type="purple-rainy3" /></td>
+            <td><input type="checkbox" data-type="white-rainy3" /></td>
+            <td><input type="checkbox" data-type="pink-rainy3" /></td>
+            <td><input type="checkbox" data-type="gray-rainy3" /></td>
+          </tr>
+          <!-- 눈 오는 날 -->
+          <tr>
+            <td>
+              <span data-i18n="snowy">下雪</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-snowy" /></td>
+            <td><input type="checkbox" data-type="yellow-snowy" /></td>
+            <td><input type="checkbox" data-type="blue-snowy" /></td>
+            <td><input type="checkbox" data-type="purple-snowy" /></td>
+            <td><input type="checkbox" data-type="white-snowy" /></td>
+            <td><input type="checkbox" data-type="pink-snowy" /></td>
+            <td><input type="checkbox" data-type="gray-snowy" /></td>
+          </tr>
+          <!-- 테마파크 -->
+          <tr>
+            <td>
+              <span data-i18n="themePark">主題樂園</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-themePark" /></td>
+            <td><input type="checkbox" data-type="yellow-themePark" /></td>
+            <td><input type="checkbox" data-type="blue-themePark" /></td>
+            <td><input type="checkbox" data-type="purple-themePark" /></td>
+            <td><input type="checkbox" data-type="white-themePark" /></td>
+            <td><input type="checkbox" data-type="pink-themePark" /></td>
+            <td><input type="checkbox" data-type="gray-themePark" /></td>
+          </tr>
+          <!-- 버스 정류장 -->
+          <tr>
+            <td>
+              <span data-i18n="busStop">公車站</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-busStop" /></td>
+            <td><input type="checkbox" data-type="yellow-busStop" /></td>
+            <td><input type="checkbox" data-type="blue-busStop" /></td>
+            <td><input type="checkbox" data-type="purple-busStop" /></td>
+            <td><input type="checkbox" data-type="white-busStop" /></td>
+            <td><input type="checkbox" data-type="pink-busStop" /></td>
+            <td><input type="checkbox" data-type="gray-busStop" /></td>
+          </tr>
+          <!-- 이탈리안 레스토랑 -->
+          <tr>
+            <td>
+              <span data-i18n="italianRestaurant">義式餐廳</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-italianRestaurant" /></td>
+            <td>
+              <input type="checkbox" data-type="yellow-italianRestaurant" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="blue-italianRestaurant" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="purple-italianRestaurant" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="white-italianRestaurant" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="pink-italianRestaurant" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="gray-italianRestaurant" />
+            </td>
+          </tr>
+          <!-- 라멘 가게 -->
+          <tr>
+            <td>
+              <span data-i18n="ramenShop">拉麵店</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-ramenShop" /></td>
+            <td><input type="checkbox" data-type="yellow-ramenShop" /></td>
+            <td><input type="checkbox" data-type="blue-ramenShop" /></td>
+            <td><input type="checkbox" data-type="purple-ramenShop" /></td>
+            <td><input type="checkbox" data-type="white-ramenShop" /></td>
+            <td><input type="checkbox" data-type="pink-ramenShop" /></td>
+            <td><input type="checkbox" data-type="gray-ramenShop" /></td>
+          </tr>
+          <!-- 다리 -->
+          <tr>
+            <td>
+              <span data-i18n="bridge">橋樑</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-bridge" /></td>
+            <td><input type="checkbox" data-type="yellow-bridge" /></td>
+            <td><input type="checkbox" data-type="blue-bridge" /></td>
+            <td><input type="checkbox" data-type="purple-bridge" /></td>
+            <td><input type="checkbox" data-type="white-bridge" /></td>
+            <td><input type="checkbox" data-type="pink-bridge" /></td>
+            <td><input type="checkbox" data-type="gray-bridge" /></td>
+          </tr>
+          <!-- 호텔 -->
+          <tr>
+            <td>
+              <span data-i18n="hotel">飯店</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-hotel" /></td>
+            <td><input type="checkbox" data-type="yellow-hotel" /></td>
+            <td><input type="checkbox" data-type="blue-hotel" /></td>
+            <td><input type="checkbox" data-type="purple-hotel" /></td>
+            <td><input type="checkbox" data-type="white-hotel" /></td>
+            <td><input type="checkbox" data-type="pink-hotel" /></td>
+            <td><input type="checkbox" data-type="gray-hotel" /></td>
+          </tr>
+          <!-- 화장품 -->
+          <tr>
+            <td>
+              <span data-i18n="cosmetics">化妝品</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-cosmetics" /></td>
+            <td><input type="checkbox" data-type="yellow-cosmetics" /></td>
+            <td><input type="checkbox" data-type="blue-cosmetics" /></td>
+            <td><input type="checkbox" data-type="purple-cosmetics" /></td>
+            <td><input type="checkbox" data-type="white-cosmetics" /></td>
+            <td><input type="checkbox" data-type="pink-cosmetics" /></td>
+            <td><input type="checkbox" data-type="gray-cosmetics" /></td>
+          </tr>
+          <!-- 제단과 사찰 -->
+          <tr>
+            <td>
+              <span data-i18n="shrine">神社/寺廟</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-shrine" /></td>
+            <td><input type="checkbox" data-type="yellow-shrine" /></td>
+            <td><input type="checkbox" data-type="blue-shrine" /></td>
+            <td><input type="checkbox" data-type="purple-shrine" /></td>
+            <td><input type="checkbox" data-type="white-shrine" /></td>
+            <td><input type="checkbox" data-type="pink-shrine" /></td>
+            <td><input type="checkbox" data-type="gray-shrine" /></td>
+          </tr>
+          <!-- 전자제품 - 배터리 시리즈 -->
+          <tr>
+            <td>
+              <span data-i18n="electronics1">電器行 - 電池1</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-electronics1" /></td>
+            <td><input type="checkbox" data-type="yellow-electronics1" /></td>
+            <td><input type="checkbox" data-type="blue-electronics1" /></td>
+            <td><input type="checkbox" data-type="purple-electronics1" /></td>
+            <td><input type="checkbox" data-type="white-electronics1" /></td>
+            <td><input type="checkbox" data-type="pink-electronics1" /></td>
+            <td><input type="checkbox" data-type="gray-electronics1" /></td>
+          </tr>
+          <!-- 나머지 배터리 시리즈 2-6 -->
+          <tr>
+            <td>
+              <span data-i18n="electronics2">電器行 - 電池2</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-electronics2" /></td>
+            <td><input type="checkbox" data-type="yellow-electronics2" /></td>
+            <td><input type="checkbox" data-type="blue-electronics2" /></td>
+            <td><input type="checkbox" data-type="purple-electronics2" /></td>
+            <td><input type="checkbox" data-type="white-electronics2" /></td>
+            <td><input type="checkbox" data-type="pink-electronics2" /></td>
+            <td><input type="checkbox" data-type="gray-electronics2" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="electronics3">電器行 - 電池3</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-electronics3" /></td>
+            <td><input type="checkbox" data-type="yellow-electronics3" /></td>
+            <td><input type="checkbox" data-type="blue-electronics3" /></td>
+            <td><input type="checkbox" data-type="purple-electronics3" /></td>
+            <td><input type="checkbox" data-type="white-electronics3" /></td>
+            <td><input type="checkbox" data-type="pink-electronics3" /></td>
+            <td><input type="checkbox" data-type="gray-electronics3" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="electronics4">電器行 - 電池4</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-electronics4" /></td>
+            <td><input type="checkbox" data-type="yellow-electronics4" /></td>
+            <td><input type="checkbox" data-type="blue-electronics4" /></td>
+            <td><input type="checkbox" data-type="purple-electronics4" /></td>
+            <td><input type="checkbox" data-type="white-electronics4" /></td>
+            <td><input type="checkbox" data-type="pink-electronics4" /></td>
+            <td><input type="checkbox" data-type="gray-electronics4" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="electronics5">電器行 - 電池5</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-electronics5" /></td>
+            <td><input type="checkbox" data-type="yellow-electronics5" /></td>
+            <td><input type="checkbox" data-type="blue-electronics5" /></td>
+            <td><input type="checkbox" data-type="purple-electronics5" /></td>
+            <td><input type="checkbox" data-type="white-electronics5" /></td>
+            <td><input type="checkbox" data-type="pink-electronics5" /></td>
+            <td><input type="checkbox" data-type="gray-electronics5" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="electronics6">電器行 - 電池6</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-electronics6" /></td>
+            <td><input type="checkbox" data-type="yellow-electronics6" /></td>
+            <td><input type="checkbox" data-type="blue-electronics6" /></td>
+            <td><input type="checkbox" data-type="purple-electronics6" /></td>
+            <td><input type="checkbox" data-type="white-electronics6" /></td>
+            <td><input type="checkbox" data-type="pink-electronics6" /></td>
+            <td><input type="checkbox" data-type="gray-electronics6" /></td>
+          </tr>
+          <!-- 전자제품 - 전구 시리즈 -->
+          <tr>
+            <td>
+              <span data-i18n="fairyLights1">電器行 - 仙女燈1</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-fairyLights1" /></td>
+            <td><input type="checkbox" data-type="yellow-fairyLights1" /></td>
+            <td><input type="checkbox" data-type="blue-fairyLights1" /></td>
+            <td><input type="checkbox" data-type="purple-fairyLights1" /></td>
+            <td><input type="checkbox" data-type="white-fairyLights1" /></td>
+            <td><input type="checkbox" data-type="pink-fairyLights1" /></td>
+            <td><input type="checkbox" data-type="gray-fairyLights1" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="fairyLights2">電器行 - 仙女燈2</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-fairyLights2" /></td>
+            <td><input type="checkbox" data-type="yellow-fairyLights2" /></td>
+            <td><input type="checkbox" data-type="blue-fairyLights2" /></td>
+            <td><input type="checkbox" data-type="purple-fairyLights2" /></td>
+            <td><input type="checkbox" data-type="white-fairyLights2" /></td>
+            <td><input type="checkbox" data-type="pink-fairyLights2" /></td>
+            <td><input type="checkbox" data-type="gray-fairyLights2" /></td>
+          </tr>
+          <!-- 카레 레스토랑 -->
+          <tr>
+            <td>
+              <span data-i18n="curryRestaurant">咖哩餐廳</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-curryRestaurant" /></td>
+            <td>
+              <input type="checkbox" data-type="yellow-curryRestaurant" />
+            </td>
+            <td><input type="checkbox" data-type="blue-curryRestaurant" /></td>
+            <td>
+              <input type="checkbox" data-type="purple-curryRestaurant" />
+            </td>
+            <td><input type="checkbox" data-type="white-curryRestaurant" /></td>
+            <td><input type="checkbox" data-type="pink-curryRestaurant" /></td>
+            <td><input type="checkbox" data-type="gray-curryRestaurant" /></td>
+          </tr>
+          <!-- 공구점 -->
+          <tr>
+            <td>
+              <span data-i18n="hardwareStore">五金行</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-hardwareStore" /></td>
+            <td><input type="checkbox" data-type="yellow-hardwareStore" /></td>
+            <td><input type="checkbox" data-type="blue-hardwareStore" /></td>
+            <td><input type="checkbox" data-type="purple-hardwareStore" /></td>
+            <td><input type="checkbox" data-type="white-hardwareStore" /></td>
+            <td><input type="checkbox" data-type="pink-hardwareStore" /></td>
+            <td><input type="checkbox" data-type="gray-hardwareStore" /></td>
+          </tr>
+          <!-- 대학 패치 -->
+          <tr>
+            <td>
+              <span data-i18n="university">大學＆學院</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-university" /></td>
+            <td><input type="checkbox" data-type="yellow-university" /></td>
+            <td><input type="checkbox" data-type="blue-university" /></td>
+            <td><input type="checkbox" data-type="purple-university" /></td>
+            <td><input type="checkbox" data-type="white-university" /></td>
+            <td><input type="checkbox" data-type="pink-university" /></td>
+            <td><input type="checkbox" data-type="gray-university" /></td>
+          </tr>
+          <!-- 특별 아이템들 -->
+          <tr>
+            <td>
+              <span data-i18n="marioHat">馬力歐帽子</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-marioHat" /></td>
+            <td><input type="checkbox" data-type="yellow-marioHat" /></td>
+            <td><input type="checkbox" data-type="blue-marioHat" /></td>
+            <td><input type="checkbox" data-type="purple-marioHat" /></td>
+            <td><input type="checkbox" data-type="white-marioHat" /></td>
+            <td><input type="checkbox" data-type="pink-marioHat" /></td>
+            <td><input type="checkbox" data-type="gray-marioHat" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="pumpkinLantern">南瓜燈</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-pumpkinLantern" /></td>
+            <td><input type="checkbox" data-type="yellow-pumpkinLantern" /></td>
+            <td><input type="checkbox" data-type="blue-pumpkinLantern" /></td>
+            <td><input type="checkbox" data-type="purple-pumpkinLantern" /></td>
+            <td><input type="checkbox" data-type="white-pumpkinLantern" /></td>
+            <td><input type="checkbox" data-type="pink-pumpkinLantern" /></td>
+            <td><input type="checkbox" data-type="gray-pumpkinLantern" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="halloweenCarnival">萬聖節狂歡</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-halloweenCarnival" /></td>
+            <td>
+              <input type="checkbox" data-type="yellow-halloweenCarnival" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="blue-halloweenCarnival" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="purple-halloweenCarnival" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="white-halloweenCarnival" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="pink-halloweenCarnival" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="gray-halloweenCarnival" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="halloweenLamp">萬聖節燈</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-halloweenLamp" /></td>
+            <td><input type="checkbox" data-type="yellow-halloweenLamp" /></td>
+            <td><input type="checkbox" data-type="blue-halloweenLamp" /></td>
+            <td><input type="checkbox" data-type="purple-halloweenLamp" /></td>
+            <td><input type="checkbox" data-type="white-halloweenLamp" /></td>
+            <td><input type="checkbox" data-type="pink-halloweenLamp" /></td>
+            <td><input type="checkbox" data-type="gray-halloweenLamp" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="anniversarySnack">一週年零食</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-anniversarySnack" /></td>
+            <td>
+              <input type="checkbox" data-type="yellow-anniversarySnack" />
+            </td>
+            <td><input type="checkbox" data-type="blue-anniversarySnack" /></td>
+            <td>
+              <input type="checkbox" data-type="purple-anniversarySnack" />
+            </td>
+            <td>
+              <input type="checkbox" data-type="white-anniversarySnack" />
+            </td>
+            <td><input type="checkbox" data-type="pink-anniversarySnack" /></td>
+            <td><input type="checkbox" data-type="gray-anniversarySnack" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="mittens">連指手套</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-mittens" /></td>
+            <td><input type="checkbox" data-type="yellow-mittens" /></td>
+            <td><input type="checkbox" data-type="blue-mittens" /></td>
+            <td><input type="checkbox" data-type="purple-mittens" /></td>
+            <td><input type="checkbox" data-type="white-mittens" /></td>
+            <td><input type="checkbox" data-type="pink-mittens" /></td>
+            <td><input type="checkbox" data-type="gray-mittens" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="puzzle">拼圖 - 2021年秋天回憶</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-puzzle" /></td>
+            <td><input type="checkbox" data-type="yellow-puzzle" /></td>
+            <td><input type="checkbox" data-type="blue-puzzle" /></td>
+            <td><input type="checkbox" data-type="purple-puzzle" /></td>
+            <td><input type="checkbox" data-type="white-puzzle" /></td>
+            <td><input type="checkbox" data-type="pink-puzzle" /></td>
+            <td><input type="checkbox" data-type="gray-puzzle" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="autumnSticker">秋季貼紙</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-autumnSticker" /></td>
+            <td><input type="checkbox" data-type="yellow-autumnSticker" /></td>
+            <td><input type="checkbox" data-type="blue-autumnSticker" /></td>
+            <td><input type="checkbox" data-type="purple-autumnSticker" /></td>
+            <td><input type="checkbox" data-type="white-autumnSticker" /></td>
+            <td><input type="checkbox" data-type="pink-autumnSticker" /></td>
+            <td><input type="checkbox" data-type="gray-autumnSticker" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="winterSticker">冬季貼紙</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-winterSticker" /></td>
+            <td><input type="checkbox" data-type="yellow-winterSticker" /></td>
+            <td><input type="checkbox" data-type="blue-winterSticker" /></td>
+            <td><input type="checkbox" data-type="purple-winterSticker" /></td>
+            <td><input type="checkbox" data-type="white-winterSticker" /></td>
+            <td><input type="checkbox" data-type="pink-winterSticker" /></td>
+            <td><input type="checkbox" data-type="gray-winterSticker" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="anniversaryCake">三周年蛋糕</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-anniversaryCake" /></td>
+            <td>
+              <input type="checkbox" data-type="yellow-anniversaryCake" />
+            </td>
+            <td><input type="checkbox" data-type="blue-anniversaryCake" /></td>
+            <td>
+              <input type="checkbox" data-type="purple-anniversaryCake" />
+            </td>
+            <td><input type="checkbox" data-type="white-anniversaryCake" /></td>
+            <td><input type="checkbox" data-type="pink-anniversaryCake" /></td>
+            <td><input type="checkbox" data-type="gray-anniversaryCake" /></td>
+          </tr>
+          <tr>
+            <td>
+              <span data-i18n="decorationBall">裝飾球</span>
+              <br />
+              <small class="checkbox-count">
+                <span class="checked-count">0</span>/<span class="total-count"
+                  >7</span
+                >
+              </small>
+            </td>
+            <td><input type="checkbox" data-type="red-decorationBall" /></td>
+            <td><input type="checkbox" data-type="yellow-decorationBall" /></td>
+            <td><input type="checkbox" data-type="blue-decorationBall" /></td>
+            <td><input type="checkbox" data-type="purple-decorationBall" /></td>
+            <td><input type="checkbox" data-type="white-decorationBall" /></td>
+            <td><input type="checkbox" data-type="pink-decorationBall" /></td>
+            <td><input type="checkbox" data-type="gray-decorationBall" /></td>
+          </tr>
+        </tbody>
+        <!-- 테이블 맨 아래에 추가 -->
+        <tfoot>
+            <tr class="total-row">
+                <td>
+                    <span data-i18n="total">總計</span>
+                    <br>
+                    <small class="total-types"></small>
+                </td>
+                <td class="total-cell" data-color="red">0</td>
+                <td class="total-cell" data-color="yellow">0</td>
+                <td class="total-cell" data-color="blue">0</td>
+                <td class="total-cell" data-color="purple">0</td>
+                <td class="total-cell" data-color="white">0</td>
+                <td class="total-cell" data-color="pink">0</td>
+                <td class="total-cell" data-color="gray">0</td>
+            </tr>
+        </tfoot>
+      </table>
+    </main>
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
