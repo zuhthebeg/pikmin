@@ -3,12 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pikmin Bloom Checklist</title>
-  <!-- Tailwind CSS CDN -->
+  
+  <!-- Favicon 태그들 추가 -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  
+  <!-- SEO 메타 태그 추가 -->
+  <title>피크민 블룸 체크리스트 - Pikmin Bloom Checklist</title>
+  <meta name="description" content="피크민 블룸의 디코레이션 수집 현황을 체크하고 관리할 수 있는 체크리스트입니다.">
+  <meta name="keywords" content="피크민 블룸, Pikmin Bloom, 체크리스트, 디코레이션, 수집">
+  
+  <!-- Open Graph 태그 -->
+  <meta property="og:title" content="피크민 블룸 체크리스트">
+  <meta property="og:description" content="피크민 블룸의 디코레이션 수집 현황을 체크하고 관리할 수 있는 체크리스트입니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zuhthebeg.github.io/pikmin/">
+  <meta property="og:image" content="https://zuhthebeg.github.io/pikmin/og-image.png">
+  
+  <!-- Twitter 카드 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="피크민 블룸 체크리스트">
+  <meta name="twitter:description" content="피크민 블룸의 디코레이션 수집 현황을 체크하고 관리할 수 있는 체크리스트입니다.">
+  <meta name="twitter:image" content="https://zuhthebeg.github.io/pikmin/og-image.png">
+  
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4caf50">
+  
+  <!-- 애플 기기를 위한 메타 태그 -->
+  <link rel="apple-touch-icon" href="icon-192x192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- 기존 스타일 -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- 기존 커스텀 스타일은 유지 -->
   <link rel="stylesheet" href="styles.css">
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX'); // 여기에 실제 GA 측정 ID를 넣으세요
+  </script>
 </head>
 <body class="bg-gray-50">
   <div id="app"></div>

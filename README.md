@@ -21,4 +21,4 @@
 
 ## 링크
 
-[Pikmin Bloom Tracker 사용하기](https://YOUR_USERNAME.github.io/REPO_NAME) 
+[Pikmin Bloom Tracker 사용하기](https://zuhthebeg.github.io/pikmin/) 
