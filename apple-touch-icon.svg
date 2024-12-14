@@ -1,0 +1,7 @@
+<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="90" cy="90" r="85" fill="white" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.1))"/>
+  <path d="M90 130c-20 0-35-25-35-45 0-20 15-35 35-35s35 15 35 35c0 20-15 45-35 45z" fill="#ff4444"/>
+  <circle cx="80" cy="82" r="3.5" fill="white"/>
+  <circle cx="100" cy="82" r="3.5" fill="white"/>
+  <path d="M90 50c-7-7-7-15 0-20 7-5 15 0 17.5 5 2.5-5 10-10 17.5-5 7 5 7 13 0 20z" fill="#4caf50"/>
+</svg> 

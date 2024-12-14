@@ -1,0 +1,7 @@
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="8" cy="8" r="7.5" fill="white" filter="drop-shadow(0 0.5px 1px rgba(0,0,0,0.1))"/>
+  <path d="M8 12c-2 0-3.5-2-3.5-4 0-2 1.5-3.5 3.5-3.5s3.5 1.5 3.5 3.5c0 2-1.5 4-3.5 4z" fill="#ff4444"/>
+  <circle cx="7" cy="7.5" r="0.5" fill="white"/>
+  <circle cx="9" cy="7.5" r="0.5" fill="white"/>
+  <path d="M8 4.5c-0.75-0.75-0.75-1.5 0-2 0.75-0.5 1.5 0 1.75 0.5 0.25-0.5 1-1 1.75-0.5 0.75 0.5 0.75 1.25 0 2z" fill="#4caf50"/>
+</svg> 
