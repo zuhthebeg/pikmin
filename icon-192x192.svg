@@ -2,7 +2,7 @@
   <!-- 배경 원 -->
   <circle cx="96" cy="96" r="88" fill="white" filter="drop-shadow(0 4px 6px rgba(0,0,0,0.1))"/>
   
-  <!-- 피크민 머리 실루엣 (더 둥글게) -->
+  <!-- 피크민 머리 실루엣 -->
   <path d="M96 140c-22 0-40-25-40-45 0-22 18-40 40-40s40 18 40 40c0 20-18 45-40 45z" 
         fill="#ff4444"/>
   
@@ -10,7 +10,7 @@
   <circle cx="86" cy="90" r="4" fill="white"/>
   <circle cx="106" cy="90" r="4" fill="white"/>
   
-  <!-- 꽃/잎 (더 피크민스러운 모양으로) -->
+  <!-- 꽃/잎 -->
   <path d="M96 55 
            c-8-10-8-20 0-25
            c8-5 16 0 20 5
@@ -18,12 +18,4 @@
            c8 5 8 15 0 25
            z" 
         fill="#4caf50"/>
-  
-  <!-- 체크마크 (약간 더 작게) -->
-  <path d="M80 96l10 10 22-22" 
-        stroke="#4caf50" 
-        stroke-width="6" 
-        fill="none" 
-        stroke-linecap="round" 
-        stroke-linejoin="round"/>
 </svg> 
