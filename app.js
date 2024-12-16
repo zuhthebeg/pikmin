@@ -58,7 +58,7 @@ const app = createApp({
       // 선택한 언어를 로컬스토리지에 저장
       localStorage.setItem('preferredLanguage', lang)
       
-      // GA 이벤트 트래���
+      // GA 이벤트 트래킹
       gtag('event', 'change_language', {
         'event_category': 'Settings',
         'event_label': lang
@@ -183,7 +183,7 @@ const app = createApp({
 
     onMounted(() => {
       loadFromLocalStorage()
-      // 페이지 로드 시 감지된 언어 설정 적용
+      // 페이지 로드 시 저장된 언어 설정 적용
       document.documentElement.lang = currentLang.value
     })
 
@@ -280,33 +280,38 @@ const app = createApp({
                 }"
                 :data-rare="isRareType(type)">
                 <td class="px-2 sm:px-4 py-3 border-b w-[80px] sm:w-[90px] relative">
-                <!-- 배경 이미지 컨테이너 -->
-                <div class="absolute inset-0 opacity-50 bg-contain bg-center bg-no-repeat"
-                        style="clip-path: circle(35%)"
-                        :style="'background-image: url(' + getPikminImage(type) + ')'">
-                </div>
-                <!-- 기존 내용 -->
-                <div class="flex items-start gap-2 relative">
+                  <!-- 배경 이미지 컨테이너 -->
+                  <div class="absolute inset-0 bg-contain bg-center bg-no-repeat"
+                       :style="{ 
+                         backgroundImage: 'url(' + getPikminImage(type) + ')',
+                         opacity: '1'
+                       }">
+                  </div>
+                  <!-- 텍스트 컨테이너 -->
+                  <div class="flex items-start gap-2 relative z-10">
                     <div class="w-full">
-                    <div class="text-sm sm:text-base break-words text-center mb-2">{{ t(type) }}</div>
-                    <div class="w-[60px] sm:w-[70px] mx-auto">
-                        <!-- 조건부 렌더링으로 완료 여부에 따라 다른 내용 표시 -->
+                      <div class="text-sm sm:text-base break-words text-center mb-2 font-semibold">
+                        {{ t(type) }}
+                      </div>
+                      <div class="w-[60px] sm:w-[70px] mx-auto bg-white/80 rounded p-1">
                         <template v-if="getCheckedCount(type) === colors.length">
-                            <div class="text-green-600 font-bold text-sm whitespace-nowrap">{{ t('completed') }}</div>
+                          <div class="text-green-600 font-bold text-sm whitespace-nowrap">
+                            {{ t('completed') }}
+                          </div>
                         </template>
                         <template v-else>
-                            <div class="text-xs sm:text-sm text-gray-500 text-center mb-1">
+                          <div class="text-xs sm:text-sm text-gray-500 text-center mb-1">
                             {{ getCheckedCount(type) }}/{{ colors.length }}
-                            </div>
-                            <div class="w-full h-1.5 bg-gray-200 rounded-full">
+                          </div>
+                          <div class="w-full h-1.5 bg-gray-200 rounded-full">
                             <div class="h-full bg-green-500 rounded-full transition-all duration-300"
-                                    :style="{ width: (getCheckedCount(type) / colors.length * 100) + '%' }">
+                                 :style="{ width: (getCheckedCount(type) / colors.length * 100) + '%' }">
                             </div>
-                            </div>
+                          </div>
                         </template>
+                      </div>
                     </div>
-                    </div>
-                </div>
+                  </div>
                 </td>
                 <td v-for="color in colors" :key="color" 
                     class="px-1 sm:px-2 py-3 border-b text-center w-[48px] sm:w-[60px]">
