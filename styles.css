@@ -53,7 +53,8 @@ table {
 thead {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
+  background: white;
 }
 
 thead th {
@@ -146,27 +147,92 @@ th:nth-child(8) {
 input[type="checkbox"] {
   transform: scale(1.5);
   cursor: pointer;
-  accent-color: #4caf50;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-input[type="checkbox"]:checked {
-  animation: pulse 0.3s ease-in-out;
+input[type="checkbox"]:checked::before {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
 }
 
-/* 체크박스 색상 커스터마이징 */
-input[data-type^="red-"] { accent-color: #ff4444; }
-input[data-type^="yellow-"] { accent-color: #ffd600; }
-input[data-type^="blue-"] { accent-color: #2196f3; }
-input[data-type^="purple-"] { accent-color: #9c27b0; }
-input[data-type^="white-"] { accent-color: #f5f5f5; }
-input[data-type^="pink-"] { accent-color: #ff80ab; }
-input[data-type^="gray-"] { accent-color: #9e9e9e; }
+/* 체크박스 기본 스타일 */
+input[data-type^="red-"] {
+  border-color: #ff4444;
+  background-color: white;
+}
+input[data-type^="red-"]:checked {
+  background-color: #ff4444;
+}
 
-/* 애니메이션 효과 */
-@keyframes pulse {
-  0% { transform: scale(1.5); }
-  50% { transform: scale(1.7); }
-  100% { transform: scale(1.5); }
+input[data-type^="yellow-"] {
+  border-color: #ffd600;
+  background-color: white;
+}
+input[data-type^="yellow-"]:checked {
+  background-color: #ffd600;
+}
+
+input[data-type^="blue-"] {
+  border-color: #2196f3;
+  background-color: white;
+}
+input[data-type^="blue-"]:checked {
+  background-color: #2196f3;
+}
+
+input[data-type^="purple-"] {
+  border-color: #9c27b0;
+  background-color: white;
+}
+input[data-type^="purple-"]:checked {
+  background-color: #9c27b0;
+}
+
+input[data-type^="white-"] {
+  border-color: #999;
+  background-color: white;
+}
+input[data-type^="white-"]:checked {
+  background-color: #999;
+}
+
+input[data-type^="pink-"] {
+  border-color: #ff80ab;
+  background-color: white;
+}
+input[data-type^="pink-"]:checked {
+  background-color: #ff80ab;
+}
+
+input[data-type^="gray-"] {
+  border-color: #9e9e9e;
+  background-color: white;
+}
+input[data-type^="gray-"]:checked {
+  background-color: #9e9e9e;
+}
+
+/* 다크모드에서의 체크박스 스타일 */
+@media (prefers-color-scheme: dark) {
+  input[type="checkbox"] {
+    background-color: #2d2d2d;
+  }
+  
+  thead {
+    background: #2d2d2d;
+  }
 }
 
 /* 반응형 디자인 */
@@ -207,8 +273,44 @@ input[data-type^="gray-"] { accent-color: #9e9e9e; }
     border-bottom: 1px solid #404040;
   }
   
+  /* 다크모드에서의 hover와 완료 상태 배경색 수정 */
   tr:hover {
-    background-color: #3d3d3d;
+    background-color: #3d3d3d !important;
+  }
+  
+  tr.completed, 
+  tr[data-rare="true"].completed {
+    background-color: #1b4b2c !important;  /* 진한 초록색 배경 */
+  }
+  
+  tr.completed:hover,
+  tr[data-rare="true"].completed:hover {
+    background-color: #2d5d3e !important;  /* hover 시 더 진한 초록색 */
+  }
+  
+  tr.completed td {
+    color: #4ade80;  /* 밝은 초록색 텍스트 */
+  }
+
+  /* 다크모드에서 체크박스 배경색 */
+  input[type="checkbox"] {
+    background-color: #2d2d2d;
+  }
+
+  /* 다크모드에서 tfoot 배경색 */
+  tfoot {
+    background-color: #2d2d2d !important;
+  }
+
+  /* 다크모드에서 검색창 배경색 */
+  input[type="text"] {
+    background-color: #2d2d2d;
+    color: #fff;
+    border-color: #4a5568;
+  }
+
+  input[type="text"]::placeholder {
+    color: #718096;
   }
 }
 

@@ -4,7 +4,25 @@ const { createApp, ref, computed, onMounted, watch } = Vue
 
 const app = createApp({
   setup() {
-    const currentLang = ref('ko')
+    // 브라우저 언어 감지 함수
+    const detectUserLanguage = () => {
+      // 저장된 언어가 있으면 그것을 우선 사용
+      const savedLang = localStorage.getItem('preferredLanguage');
+      if (savedLang) return savedLang;
+
+      // 브라우저 언어 설정 확인
+      const browserLang = navigator.language || navigator.userLanguage;
+      const lang = browserLang.toLowerCase();
+
+      // 지원하는 언어와 매칭
+      if (lang.startsWith('ko')) return 'ko';
+      if (lang.startsWith('ja')) return 'ja';
+      if (lang.startsWith('zh-tw')) return 'zh-TW';
+      if (lang.startsWith('zh')) return 'zh-CN';
+      return 'en'; // 기본값은 영어
+    };
+
+    const currentLang = ref(detectUserLanguage())
     const savedData = ref({})
     const searchTerm = ref('')
     const colors = ['red', 'yellow', 'blue', 'purple', 'white', 'pink', 'gray']
@@ -37,8 +55,10 @@ const app = createApp({
     const changeLanguage = (lang) => {
       currentLang.value = lang
       document.documentElement.lang = lang
+      // 선택한 언어를 로컬스토리지에 저장
+      localStorage.setItem('preferredLanguage', lang)
       
-      // GA 이벤트 트래킹
+      // GA 이벤트 트래���
       gtag('event', 'change_language', {
         'event_category': 'Settings',
         'event_label': lang
@@ -163,6 +183,8 @@ const app = createApp({
 
     onMounted(() => {
       loadFromLocalStorage()
+      // 페이지 로드 시 감지된 언어 설정 적용
+      document.documentElement.lang = currentLang.value
     })
 
     return {
