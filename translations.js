@@ -1,14 +1,28 @@
 const translations = {
-    ko: {
+  ko: {
+    common: {
       title: '피크민 블룸 트래커',
+      resetButton: '초기화',
+      resetConfirm: '정말 모든 체크박스를 초기화하시겠습니까?\n이 작업은 되돌릴 수 없습니다.',
+      searchPlaceholder: '피크민 종류 검색...',
+      completed: '수집완료!🎉',
+      total: '합계',
+      types: '종류'
+    },
+    categories: {
       type: '종류',
+      locations: '장소'
+    },
+    colors: {
       red: '빨강',
       yellow: '노랑',
       blue: '파랑',
       purple: '보라',
       white: '하양',
       pink: '분홍',
-      gray: '회색',
+      gray: '회색'
+    },
+    locations: {
       restaurant: '레스토랑',
       rareRestaurant: '레스토랑 - 희귀',
       cafe: '카페',
@@ -60,7 +74,7 @@ const translations = {
       hotel: '호텔',
       cosmetics: '화장품',
       shrine: '제단과 사찰',
-      electronics1: '전자제품 - 배터리1',
+      electronics1: '전���제품 - 배터리1',
       electronics2: '전자제품 - 배터리2',
       electronics3: '전자제품 - 배터리3',
       electronics4: '전자제품 - 배터리4',
@@ -81,22 +95,33 @@ const translations = {
       autumnSticker: '가을 스티커',
       winterSticker: '겨울 스티커',
       anniversaryCake: '3주년 기념 케이크',
-      decorationBall: '방울 장식',
-      resetButton: '초기화',
-      resetConfirm: '정말 모든 체크박스를 초기화하시겠습니까?\n이 작업은 되돌릴 수 없습니다.',
-      searchPlaceholder: '피크민 종류 검색...',
-      completed: '수집완료!🎉'
-    },
-    en: {
+      decorationBall: '방울 장식'
+    }
+  },
+  en: {
+    common: {
       title: 'Pikmin Bloom Tracker',
+      resetButton: 'Reset',
+      resetConfirm: 'Are you sure you want to reset all checkboxes?\nThis action cannot be undone.',
+      searchPlaceholder: 'Search Pikmin types...',
+      completed: 'Completed!🎉',
+      total: 'Total',
+      types: 'Types'
+    },
+    categories: {
       type: 'Type',
+      locations: 'Locations'
+    },
+    colors: {
       red: 'Red',
       yellow: 'Yellow',
       blue: 'Blue',
       purple: 'Purple',
       white: 'White',
       pink: 'Pink',
-      gray: 'Gray',
+      gray: 'Gray'
+    },
+    locations: {
       restaurant: 'Restaurant',
       rareRestaurant: 'Restaurant - Rare',
       cafe: 'Cafe',
@@ -170,17 +195,32 @@ const translations = {
       winterSticker: 'Winter Sticker',
       anniversaryCake: '3rd Anniversary Cake',
       decorationBall: 'Decoration Ball'
-    },
-    ja: {
+    }
+  },
+  ja: {
+    common: {
       title: 'ピクミンブルームトラッカー',
+      resetButton: 'リセット',
+      resetConfirm: '全てのチェックボックスをリセットしますか？\nこの操作は取り消せません。',
+      searchPlaceholder: 'ピクミンタイプを検索...',
+      completed: '完了!🎉',
+      total: '合計',
+      types: 'タイプ'
+    },
+    categories: {
       type: 'タイプ',
+      locations: '場所'
+    },
+    colors: {
       red: 'レッド',
       yellow: 'イエロー',
       blue: 'ブルー',
       purple: 'パープル',
       white: 'ホワイト',
       pink: 'ピンク',
-      gray: 'グレー',
+      gray: 'グレー'
+    },
+    locations: {
       restaurant: 'レストラン',
       rareRestaurant: 'レストラン - レア',
       cafe: 'カフェ',
@@ -254,17 +294,32 @@ const translations = {
       winterSticker: '冬のステッカー',
       anniversaryCake: '3周年記念ケーキ',
       decorationBall: '装飾ボール'
-    },
-    'zh-CN': {
+    }
+  },
+  'zh-CN': {
+    common: {
       title: '皮克敏布鲁姆追踪器',
+      resetButton: '重置',
+      resetConfirm: '确定要重置所有复选框吗？\n此操作无法撤消。',
+      searchPlaceholder: '搜索皮克敏类型...',
+      completed: '完成!🎉',
+      total: '总计',
+      types: '类型'
+    },
+    categories: {
       type: '类型',
+      locations: '地点'
+    },
+    colors: {
       red: '红色',
       yellow: '黄色',
       blue: '蓝色',
       purple: '紫色',
       white: '白色',
       pink: '粉色',
-      gray: '灰色',
+      gray: '灰色'
+    },
+    locations: {
       restaurant: '餐厅',
       rareRestaurant: '餐厅 - 稀有',
       cafe: '咖啡厅',
@@ -338,22 +393,37 @@ const translations = {
       winterSticker: '冬季贴纸',
       anniversaryCake: '三周年纪念蛋糕',
       decorationBall: '装饰球'
-    },
-    'zh-TW': {
+    }
+  },
+  'zh-TW': {
+    common: {
       title: '皮克敏布魯姆追蹤器',
+      resetButton: '重置',
+      resetConfirm: '確定要重置所有複選框嗎？\n此操作無法撤消。',
+      searchPlaceholder: '搜尋皮克敏類型...',
+      completed: '完成!🎉',
+      total: '總計',
+      types: '類型'
+    },
+    categories: {
       type: '類型',
+      locations: '地點'
+    },
+    colors: {
       red: '紅',
       yellow: '黃',
       blue: '藍',
       purple: '紫',
       white: '白',
       pink: '粉',
-      gray: '灰',
+      gray: '灰'
+    },
+    locations: {
       restaurant: '餐廳',
       rareRestaurant: '餐廳 - 稀有',
       cafe: '咖啡廳',
-      dessert1: '甜點店1',
-      dessert2: '甜點店2',
+      dessert1: '甜點店1 - 馬卡龍',
+      dessert2: '甜點店2 - 甜甜圈',
       cinema: '電影院',
       pharmacy: '藥局',
       zoo: '動物園',
@@ -364,14 +434,14 @@ const translations = {
       postOffice: '郵局',
       artGallery: '美術館',
       airport: '機場',
-      station1: '車站1',
-      station2: '車站2',
+      station1: '車站1 - 紙火車',
+      station2: '車站2 - 車票',
       beach: '海灘',
       burgerShop: '漢堡店',
-      convenienceStore1: '便利店1',
-      convenienceStore2: '便利店2',
-      supermarket1: '超市1',
-      supermarket2: '超市2',
+      convenienceStore1: '便利店1 - 瓶蓋',
+      convenienceStore2: '便利店2 - 零食',
+      supermarket1: '超市1 - 蘑菇',
+      supermarket2: '超市2 - 香蕉',
       bakery: '麵包店',
       rareBakery: '麵包店 - 稀有',
       beautySalon: '美容院',
@@ -424,3 +494,4 @@ const translations = {
       decorationBall: '裝飾球'
     }
   }
+}

@@ -28,14 +28,13 @@ const app = createApp({
     const colors = ['red', 'yellow', 'blue', 'purple', 'white', 'pink', 'gray']
     
     const pikminTypes = computed(() => 
-      Object.keys(translations[currentLang.value])
-        .filter(key => !['title', 'type', 'resetButton', 'resetConfirm', 'searchPlaceholder', 'total', 'types', ...colors].includes(key))
+      Object.keys(translations[currentLang.value].locations)
     )
 
     const filteredTypes = computed(() => {
       const searchLower = searchTerm.value.toLowerCase()
       return pikminTypes.value.filter(type => 
-        translations[currentLang.value][type].toLowerCase().includes(searchLower)
+        translations[currentLang.value].locations[type].toLowerCase().includes(searchLower)
       )
     })
 
@@ -50,7 +49,15 @@ const app = createApp({
 
     const totalTypes = computed(() => filteredTypes.value.length)
 
-    const t = (key) => translations[currentLang.value][key]
+    const t = (key, category = 'common') => {
+      const categories = ['common', 'categories', 'colors', 'locations'];
+      for (let cat of categories) {
+        if (translations[currentLang.value][cat]?.[key]) {
+          return translations[currentLang.value][cat][key];
+        }
+      }
+      return key;
+    }
 
     const changeLanguage = (lang) => {
       currentLang.value = lang
