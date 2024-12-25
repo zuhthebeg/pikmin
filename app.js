@@ -31,11 +31,58 @@ const app = createApp({
       Object.keys(translations[currentLang.value].locations)
     )
 
+    // Set 객체를 ref로 감싸서 선언
+    const activeFilters = ref(new Set())
+    
+    // 이미지가 있는 타입만 필터링
+    const imageTypes = computed(() => {
+      return pikminTypes.value.filter(type => getPikminImage(type))
+    })
+    
+    // 이미지 URL을 기준으로 타입들을 그룹화
+    const imageGroups = computed(() => {
+      const groups = new Map()
+      
+      imageTypes.value.forEach(type => {
+        const imageUrl = getPikminImage(type)
+        if (!imageUrl) return
+        if (!groups.has(imageUrl)) {
+          groups.set(imageUrl, [])
+        }
+        groups.get(imageUrl).push(type)
+      })
+      
+      return groups
+    })
+    
+    // 필터 토글 메서드 수정
+    const toggleFilter = (imageUrl) => {
+      const typesInGroup = imageGroups.value.get(imageUrl) || []
+      const allTypesInGroupActive = typesInGroup.every(type => activeFilters.value.has(type))
+      
+      typesInGroup.forEach(type => {
+        if (allTypesInGroupActive) {
+          activeFilters.value.delete(type)
+        } else {
+          activeFilters.value.add(type)
+        }
+      })
+    }
+    
+    // 필터된 타입 계산 수정
     const filteredTypes = computed(() => {
       const searchLower = searchTerm.value.toLowerCase()
-      return pikminTypes.value.filter(type => 
-        translations[currentLang.value].locations[type].toLowerCase().includes(searchLower)
-      )
+      return pikminTypes.value.filter(type => {
+        const matchesSearch = translations[currentLang.value].locations[type]
+          .toLowerCase()
+          .includes(searchLower)
+        
+        if (activeFilters.value.size === 0) {
+          return matchesSearch
+        }
+        
+        return matchesSearch && !activeFilters.value.has(type)
+      })
     })
 
     const totals = computed(() => {
@@ -235,6 +282,51 @@ const app = createApp({
       return !colorRestrictions[type].includes(color);
     }
 
+    // 이미지가 활성화되었는지 확인하는 메서드
+    const isImageActive = (imageUrl) => {
+      const typesInGroup = imageGroups.value.get(imageUrl) || []
+      return typesInGroup.some(type => activeFilters.value.has(type))
+    }
+
+    // 현재 하이라이트된 타입을 추적하기 위한 ref 추가
+    const highlightedType = ref(null)
+    
+    const scrollToType = (imageUrl) => {
+      const typesInGroup = imageGroups.value.get(imageUrl) || []
+      if (typesInGroup.length === 0) return
+      
+      const firstType = typesInGroup[0]
+      const element = document.querySelector(`[data-type="${firstType}"]`)
+      
+      if (element) {
+        // 이전 하이라이트 제거
+        highlightedType.value = null
+        
+        // 스크롤 시작
+        element.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center'
+        })
+
+        // 스크롤이 완료된 후 하이라이트 효과 적용
+        setTimeout(() => {
+          highlightedType.value = firstType
+          // 하이라이트 효과를 3초 후에 제거
+          setTimeout(() => {
+            highlightedType.value = null
+          }, 3000)
+        }, 500) // 스크롤 완료 예상 시간
+      }
+    }
+
+    // 맨 위로 스크롤하는 메서드 추가
+    const scrollToTop = () => {
+      window?.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
+
     watch(currentLang, (newLang) => {
       document.documentElement.lang = newLang
     })
@@ -265,12 +357,43 @@ const app = createApp({
       isRareType,
       getPikminImage,
       isColorAvailable,
-      getAvailableColors
+      getAvailableColors,
+      imageTypes,
+      activeFilters,
+      toggleFilter,
+      imageGroups,
+      isImageActive,
+      scrollToType,
+      highlightedType,
+      scrollToTop,
     }
   },
 
   template: `
     <div class="min-h-screen bg-gradient-to-b from-blue-50 to-green-50">
+      <button 
+        @click="scrollToTop"
+        class="fixed right-4 bottom-4 z-50 p-2 rounded-full bg-white/80 backdrop-blur-sm
+               shadow-lg hover:shadow-xl transition-all duration-300
+               hover:bg-white hover:scale-110 active:scale-95
+               border border-green-100 group"
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          class="h-5 w-5 text-green-600 group-hover:text-green-700 transition-colors" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M5 10l7-7m0 0l7 7m-7-7v18"
+          />
+        </svg>
+      </button>
+
       <header class="bg-gradient-to-r from-green-600 to-green-700 shadow-lg relative overflow-hidden">
         <div class="container mx-auto px-4 py-3">
           <h1 class="text-2xl sm:text-3xl font-bold text-white text-center drop-shadow-lg">
@@ -292,6 +415,26 @@ const app = createApp({
             <option value="zh-CN">简体中文</option>
             <option value="zh-TW">繁體中文</option>
           </select>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-4 max-w-xl mx-auto">
+          <button
+            v-for="[imageUrl, types] in imageGroups"
+            :key="imageUrl"
+            @click="scrollToType(imageUrl)"
+            :class="[
+              'flex items-center p-2 rounded-lg transition-all',
+              'hover:bg-green-50',
+              'bg-white hover:shadow-md active:scale-95'
+            ]"
+            :title="types.map(type => t(type)).join(' / ')"
+          >
+            <img
+              :src="imageUrl"
+              :alt="types[0]"
+              class="w-6 h-6 object-contain"
+            >
+          </button>
         </div>
 
         <div class="relative max-w-xl mx-auto mb-4">
@@ -325,6 +468,11 @@ const app = createApp({
             <tbody class="overflow-y-auto" style="max-height: calc(100vh - 300px);">
             <tr v-for="type in filteredTypes" 
                 :key="type"
+                :data-type="type"
+                :class="[
+                  'hover:bg-green-50 transition-all duration-500',
+                  type === highlightedType ? 'highlight-row' : ''
+                ]"
                 class="hover:bg-green-50 transition-colors duration-150"
                 :class="{ 
                     'bg-green-100': isRowCompleted(type),
@@ -344,7 +492,7 @@ const app = createApp({
                           {{ t(type) }}
                         </div>
                       </div>
-                      <!-- 프로그래스바 영역 주석 처리
+                      <!-- 프로그래바 영역 주석 처리
                       <div class="progress-container">
                         <template v-if="getCheckedCount(type) === getAvailableColors(type).length">
                           <div class="text-green-600 font-bold text-sm whitespace-nowrap">

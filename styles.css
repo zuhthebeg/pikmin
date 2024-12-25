@@ -349,7 +349,7 @@ tr[data-rare="true"] td:first-child {
   font-weight: bold;
 }
 
-/* 별 표시 위치 조정 */
+/* ���� 표시 위치 조정 */
 tr[data-rare="true"] td:first-child::before {
   content: '⭐';
   position: absolute;
@@ -599,5 +599,146 @@ select {
   select option {
     background-color: #2d2d2d;
     color: #fff;
+  }
+}
+
+/* 이미지 필터 버튼 스타일 */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.filter-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.filter-button:hover {
+  background-color: #f0fdf4;
+  border-color: #86efac;
+}
+
+.filter-button.active {
+  opacity: 0.4;
+  background-color: #f3f4f6;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  .filter-button {
+    background-color: #2d2d2d;
+    border-color: #4a5568;
+  }
+
+  .filter-button:hover {
+    background-color: #374151;
+    border-color: #68d391;
+  }
+
+  .filter-button.active {
+    background-color: #1f2937;
+  }
+}
+
+/* 하이라이트 효과 강화 */
+@keyframes highlight {
+  0% {
+    background-color: rgba(34, 197, 94, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    background-color: rgba(34, 197, 94, 0.1);
+    transform: scale(1.01);
+  }
+  100% {
+    background-color: rgba(34, 197, 94, 0.3);
+    transform: scale(1);
+  }
+}
+
+.highlight-row {
+  animation: highlight 1.5s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-row td {
+  background-color: transparent;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  @keyframes highlight-dark {
+    0% {
+      background-color: rgba(34, 197, 94, 0.4);
+      transform: scale(1);
+    }
+    50% {
+      background-color: rgba(34, 197, 94, 0.2);
+      transform: scale(1.01);
+    }
+    100% {
+      background-color: rgba(34, 197, 94, 0.4);
+      transform: scale(1);
+    }
+  }
+
+  .highlight-row {
+    animation: highlight-dark 1.5s ease-in-out infinite;
+  }
+}
+
+/* 스크롤 상단 이동 버튼 스타일 */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+button[class*="fixed"] {
+  animation: float 3s ease-in-out infinite;
+}
+
+button[class*="fixed"]:hover {
+  animation-play-state: paused;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  button[class*="fixed"] {
+    @apply bg-gray-800/80;
+    @apply border-gray-700;
+  }
+  
+  button[class*="fixed"]:hover {
+    @apply bg-gray-800;
+  }
+  
+  button[class*="fixed"] svg {
+    @apply text-green-500;
+  }
+  
+  button[class*="fixed"]:hover svg {
+    @apply text-green-400;
+  }
+}
+
+/* 모바일에서 버튼 크기 조정 */
+@media (max-width: 768px) {
+  button[class*="fixed"] {
+    @apply right-2 bottom-2;
+    transform: scale(0.9);
   }
 }
