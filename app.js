@@ -109,13 +109,12 @@ const app = createApp({
     const changeLanguage = (lang) => {
       currentLang.value = lang
       document.documentElement.lang = lang
-      // 선택한 언어를 로컬스토리지에 저장
       localStorage.setItem('preferredLanguage', lang)
       
-      // GA 이벤트 트래킹
-      gtag('event', 'change_language', {
-        'event_category': 'Settings',
-        'event_label': lang
+      // GTM 이벤트 트래킹
+      window.dataLayer?.push({
+        'event': 'change_language',
+        'language': lang
       });
     }
 
@@ -124,11 +123,11 @@ const app = createApp({
       savedData.value[key] = !savedData.value[key]
       saveToLocalStorage()
       
-      // GA 이벤트 트래킹
-      gtag('event', 'update_checkbox', {
-        'event_category': 'Interaction',
-        'event_label': `${color}-${type}`,
-        'value': savedData.value[key] ? 1 : 0
+      // GTM 이벤트 트래킹
+      window.dataLayer?.push({
+        'event': 'update_checkbox',
+        'checkbox_id': `${color}-${type}`,
+        'checkbox_state': savedData.value[key]
       });
     }
 
@@ -149,10 +148,9 @@ const app = createApp({
         savedData.value = {}
         saveToLocalStorage()
         
-        // GA 이벤트 트래킹
-        gtag('event', 'reset_all', {
-          'event_category': 'Interaction',
-          'event_label': 'Reset All Checkboxes'
+        // GTM 이벤트 트래킹
+        window.dataLayer?.push({
+          'event': 'reset_all'
         });
       }
     }
