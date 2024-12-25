@@ -92,6 +92,8 @@ th {
 
 th:first-child {
   border-top-left-radius: 8px;
+  width: 89px;
+  min-width: 89px;
 }
 
 th:last-child {
@@ -99,7 +101,7 @@ th:last-child {
 }
 
 td {
-  padding: 12px;
+  padding: 4px;
   border-bottom: 1px solid #eee;
   text-align: center;
 }
@@ -260,6 +262,11 @@ input[data-type^="gray-"]:checked {
     right: 0;
     margin-bottom: 1rem;
   }
+  
+  th:first-child {
+    width: 89px;
+    min-width: 89px;
+  }
 }
 
 /* 다크 모드 지원 */
@@ -348,7 +355,6 @@ tr[data-rare="true"] td:first-child::before {
   color: #ffa000;
 }
 
-/* 희귀 종류가 완료되었을 때 - 배경색 제거 */
 tr[data-rare="true"].completed {
   background-color: #e8f5e9 !important; /* 일반 완료 행과 동일한 배경색 사용 */
 }
@@ -471,4 +477,66 @@ tfoot tr {
   input[data-type^="white-"]:checked::before {
     color: #2d2d2d;
   }
+}
+
+/* 셀 내부 레이아웃을 위한 스타일 수정 */
+.location-cell {
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+  width: 100%;
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+}
+
+.location-image {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  margin-bottom: 2px;
+}
+
+.progress-container {
+  width: 100%;
+  background: white/80;
+  border-radius: 4px;
+  padding: 4px;
+  margin-top: 4px;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  .progress-container {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* 다크모드에서 이미지 필터링 */
+@media (prefers-color-scheme: dark) {
+  .location-image {
+    filter: brightness(0.9) contrast(1.1);
+  }
+}
+
+/* 텍스트 관련 스타일 수정 */
+.location-info .text-sm {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  white-space: pre-line;
+  overflow: visible;
+  text-overflow: clip;
+  max-width: 89px;
+}
+
+/* 하이픈을 기준으로 줄바꿈이 자연스럽게 되도록 word-break 추가 */
+.location-info .text-sm {
+  word-break: break-word;
+  hyphens: auto;
 }

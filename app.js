@@ -53,7 +53,7 @@ const app = createApp({
       const categories = ['common', 'categories', 'colors', 'locations'];
       for (let cat of categories) {
         if (translations[currentLang.value][cat]?.[key]) {
-          return translations[currentLang.value][cat][key];
+          return translations[currentLang.value][cat][key].split(' - ').join('\n');
         }
       }
       return key;
@@ -136,39 +136,49 @@ const app = createApp({
 
     const getPikminImage = (type) => {
       const baseUrl = 'https://pikmin-map.pixelpirate.fr/assets/icons/picture-book/'
+      
+      // 희귀 타입의 경우 기본 타입의 이미지를 사용
+      const normalizedType = type.replace('rare', '').toLowerCase()
+      
       const imageMap = {
         'restaurant': 'Restaurant.png',
         'cafe': 'Cafe.png',
-        'sweetshop': 'Desert.png',
+        'dessert1': 'Desert.png',
+        'dessert2': 'Desert.png',
+        'cinema': 'Theatre.png',
         'movietheater': 'Theatre.png',
         'pharmacy': 'Pharmacy.png',
         'zoo': 'Zoo.png',
         'forest1': 'Forest.png',
         'forest2': 'Forest.png',
         'waterside': 'Water.png',
-        'postOffice': 'Posts.png',
-        'artGallery': 'Museum.png',
+        'postoffice': 'Posts.png',
+        'artgallery': 'Museum.png',
         'airport': 'AirPort.png',
         'station1': 'Station.png',
         'station2': 'Station.png',
         'beach': 'Beach.png',
-        'burgerShop': 'Hamburger.png',
-        'convenienceStore1': 'ConvenienceStore.png',
-        'convenienceStore2': 'ConvenienceStore.png',
+        'burgershop': 'Hamburger.png',
+        'conveniencestore1': 'ConvenienceStore.png',
+        'conveniencestore2': 'ConvenienceStore.png',
         'supermarket1': 'Supermarket.png',
         'supermarket2': 'Supermarket.png',
         'bakery': 'Bakery.png',
-        'beautySalon': 'Salon.png',
-        'clothingStore': 'ClosthingStore.png',
+        'beautysalon': 'Salon.png',
+        'clothingstore': 'ClosthingStore.png',
         'park': 'Park.png',
+        'park1': 'Park.png',
+        'park2': 'Park.png',
         'library': 'Library.png',
-        'sushiRestaurant': 'SushiRestaurant.png',
+        'sushirestaurant': 'SushiRestaurant.png',
         'hill': 'Mountain.png',
         'gym': 'Stadium.png',
-        'themePark': 'AmusementPark.png',
-        'busStop': 'BusStop.png',
-        'italianRestaurant': 'ItalianRestaurant.png',
-        'ramenShop': 'RamenRestaurant.png',
+        'themepark': 'AmusementPark.png',
+        'themepark1': 'AmusementPark.png',
+        'themepark2': 'AmusementPark.png',
+        'busstop': 'BusStop.png',
+        'italianrestaurant': 'ItalianRestaurant.png',
+        'ramenshop': 'RamenRestaurant.png',
         'bridge': 'Bridge.png',
         'hotel': 'Hotel.png',
         'cosmetics': 'Cosme.png',
@@ -179,11 +189,15 @@ const app = createApp({
         'electronics4': 'Electronics.png',
         'electronics5': 'Electronics.png',
         'electronics6': 'Electronics.png',
-        'curryRestaurant': 'Curry.png',
-        'hardwareStore': 'HardwareStore.png',
-        'university': 'University.png'
+        'curryrestaurant': 'Curry.png',
+        'hardwarestore': 'HardwareStore.png',
+        'university': 'University.png',
+        'mexicanrestaurant': 'MexicanRestaurant.png'
       }
-      return imageMap[type] ? `${baseUrl}${imageMap[type]}` : ''
+      
+      // 타입을 소문자로 변환하여 매칭
+      const lookupType = normalizedType.toLowerCase()
+      return imageMap[lookupType] ? `${baseUrl}${imageMap[lookupType]}` : ''
     }
 
     // 색상 제한이 있는 타입들과 그들의 사용 불가능한 색상 매핑
@@ -192,14 +206,14 @@ const app = createApp({
       'rainy2': ['red', 'yellow', 'purple', 'white', 'pink', 'gray'],
       'rainy3': ['red', 'yellow', 'purple', 'white', 'pink', 'gray'],
       'snowy': ['red', 'yellow', 'purple', 'pink', 'gray'],
-      'electronics1': ['red', 'purple', 'white', 'pink', 'gray'],
-      'electronics2': ['red', 'purple', 'white', 'pink', 'gray'],
-      'electronics3': ['red', 'purple', 'white', 'pink', 'gray'],
-      'electronics4': ['red', 'purple', 'white', 'pink', 'gray'],
-      'electronics5': ['red', 'purple', 'white', 'pink', 'gray'],
-      'electronics6': ['red', 'purple', 'white', 'pink', 'gray'],
-      'fairyLights1': ['red', 'purple', 'white', 'pink', 'gray'],
-      'fairyLights2': ['red', 'purple', 'white', 'pink', 'gray'],
+      'electronics1': ['red','blue', 'purple', 'white', 'pink', 'gray'],
+      'electronics2': ['red', 'blue','purple', 'white', 'pink', 'gray'],
+      'electronics3': ['red', 'blue','purple', 'white', 'pink', 'gray'],
+      'electronics4': ['red','blue', 'purple', 'white', 'pink', 'gray'],
+      'electronics5': ['red','blue', 'purple', 'white', 'pink', 'gray'],
+      'electronics6': ['red','blue', 'purple', 'white', 'pink', 'gray'],
+      'fairyLights1': ['red', 'blue','purple', 'white', 'pink', 'gray'],
+      'fairyLights2': ['red', 'blue','purple', 'white', 'pink', 'gray'],
       'marioHat': ['red', 'yellow', 'purple','white', 'pink', 'gray'],
       'rareRestaurant': ['purple', 'white', 'pink', 'gray'],
       'gym': ['purple', 'white', 'pink', 'gray'],
@@ -208,13 +222,12 @@ const app = createApp({
       'university': ['purple', 'white', 'pink', 'gray']
     }
 
-    // 특정 타입의 사용 가능한 색상 확인
+    // 특정 타입 사용 가능한 색상 확인
     const getAvailableColors = (type) => {
       if (!colorRestrictions[type]) return colors; // 제한이 없으면 모든 색상 사용 가능
       return colors.filter(color => !colorRestrictions[type].includes(color));
     }
 
-    // 체크박스 표시 여부 확인
     const isColorAvailable = (type, color) => {
       if (!colorRestrictions[type]) return true;
       return !colorRestrictions[type].includes(color);
@@ -324,30 +337,27 @@ const app = createApp({
                     'hover:bg-green-200': isRowCompleted(type)
                 }"
                 :data-rare="isRareType(type)">
-                <td class="px-2 sm:px-4 py-3 border-b w-[80px] sm:w-[90px] relative">
-                  <!-- 배경 이미지 컨테이너 -->
-                  <div class="absolute inset-0 bg-contain bg-center bg-no-repeat"
-                       :style="{ 
-                         backgroundImage: 'url(' + getPikminImage(type) + ')',
-                         opacity: '1'
-                       }">
-                  </div>
-                  <!-- 텍스트 컨테이너 -->
-                  <div class="flex items-start gap-2 relative z-10">
-                    <div class="w-full">
-                      <div class="text-sm sm:text-base break-words text-center mb-2 font-semibold">
-                        {{ t(type) }}
+                <td class="px-2 sm:px-4 py-3 border-b">
+                  <div class="location-cell">
+                    <div class="location-info">
+                      <div class="flex flex-col items-center gap-2">
+                        <img v-if="getPikminImage(type)"
+                             :src="getPikminImage(type)"
+                             :alt="t(type)"
+                             class="location-image"
+                        >
+                        <div class="text-sm sm:text-base break-words font-semibold text-center">
+                          {{ t(type) }}
+                        </div>
                       </div>
-                      <div class="w-[60px] sm:w-[70px] mx-auto bg-white/80 rounded p-1">
+                      <!-- 프로그래스바 영역 주석 처리
+                      <div class="progress-container">
                         <template v-if="getCheckedCount(type) === getAvailableColors(type).length">
                           <div class="text-green-600 font-bold text-sm whitespace-nowrap">
                             {{ t('completed') }}
                           </div>
                         </template>
                         <template v-else>
-                          <div class="text-xs sm:text-sm text-gray-500 text-center mb-1">
-                            {{ getCheckedCount(type) }}/{{ getAvailableColors(type).length }}
-                          </div>
                           <div class="w-full h-1.5 bg-gray-200 rounded-full">
                             <div class="h-full bg-green-500 rounded-full transition-all duration-300"
                                  :style="{ width: (getCheckedCount(type) / getAvailableColors(type).length * 100) + '%' }">
@@ -355,6 +365,7 @@ const app = createApp({
                           </div>
                         </template>
                       </div>
+                      -->
                     </div>
                   </div>
                 </td>
