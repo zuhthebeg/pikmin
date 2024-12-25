@@ -201,11 +201,15 @@ input[data-type^="purple-"]:checked {
 }
 
 input[data-type^="white-"] {
-  border-color: #999;
+  border: 2px solid #333;
   background-color: white;
 }
 input[data-type^="white-"]:checked {
-  background-color: #999;
+  background-color: white;
+  border-color: #333;
+}
+input[data-type^="white-"]:checked::before {
+  color: #333;
 }
 
 input[data-type^="pink-"] {
@@ -217,11 +221,11 @@ input[data-type^="pink-"]:checked {
 }
 
 input[data-type^="gray-"] {
-  border-color: #9e9e9e;
+  border-color: #666;
   background-color: white;
 }
 input[data-type^="gray-"]:checked {
-  background-color: #9e9e9e;
+  background-color: #666;
 }
 
 /* 다크모드에서의 체크박스 스타일 */
@@ -452,4 +456,19 @@ tr.hidden {
 /* tfoot는 항상 표시 */
 tfoot tr {
     display: table-row !important;
+}
+
+/* 다크모드에서의 흰색/회색 체크박스 스타일 */
+@media (prefers-color-scheme: dark) {
+  input[data-type^="white-"] {
+    border-color: #fff;
+    background-color: #2d2d2d;
+  }
+  input[data-type^="white-"]:checked {
+    background-color: white;
+    border-color: white;
+  }
+  input[data-type^="white-"]:checked::before {
+    color: #2d2d2d;
+  }
 }

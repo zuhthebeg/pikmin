@@ -86,13 +86,15 @@ const app = createApp({
     }
 
     const getCheckedCount = (type) => {
-      return colors.filter(color => 
+      const availableColors = getAvailableColors(type);
+      return availableColors.filter(color => 
         savedData.value[`${color}-${type}`]
-      ).length
+      ).length;
     }
 
     const isRowCompleted = (type) => {
-      return getCheckedCount(type) === colors.length
+      const availableColors = getAvailableColors(type);
+      return getCheckedCount(type) === availableColors.length;
     }
 
     const resetAll = () => {
@@ -184,6 +186,40 @@ const app = createApp({
       return imageMap[type] ? `${baseUrl}${imageMap[type]}` : ''
     }
 
+    // 색상 제한이 있는 타입들과 그들의 사용 불가능한 색상 매핑
+    const colorRestrictions = {
+      'rainy1': ['red', 'yellow', 'purple', 'white', 'pink', 'gray'],
+      'rainy2': ['red', 'yellow', 'purple', 'white', 'pink', 'gray'],
+      'rainy3': ['red', 'yellow', 'purple', 'white', 'pink', 'gray'],
+      'snowy': ['red', 'yellow', 'purple', 'pink', 'gray'],
+      'electronics1': ['red', 'purple', 'white', 'pink', 'gray'],
+      'electronics2': ['red', 'purple', 'white', 'pink', 'gray'],
+      'electronics3': ['red', 'purple', 'white', 'pink', 'gray'],
+      'electronics4': ['red', 'purple', 'white', 'pink', 'gray'],
+      'electronics5': ['red', 'purple', 'white', 'pink', 'gray'],
+      'electronics6': ['red', 'purple', 'white', 'pink', 'gray'],
+      'fairyLights1': ['red', 'purple', 'white', 'pink', 'gray'],
+      'fairyLights2': ['red', 'purple', 'white', 'pink', 'gray'],
+      'marioHat': ['red', 'yellow', 'purple','white', 'pink', 'gray'],
+      'rareRestaurant': ['purple', 'white', 'pink', 'gray'],
+      'gym': ['purple', 'white', 'pink', 'gray'],
+      'themePark1': ['purple', 'white', 'pink', 'gray'],
+      'themePark2': ['purple', 'white', 'pink', 'gray'],
+      'university': ['purple', 'white', 'pink', 'gray']
+    }
+
+    // 특정 타입의 사용 가능한 색상 확인
+    const getAvailableColors = (type) => {
+      if (!colorRestrictions[type]) return colors; // 제한이 없으면 모든 색상 사용 가능
+      return colors.filter(color => !colorRestrictions[type].includes(color));
+    }
+
+    // 체크박스 표시 여부 확인
+    const isColorAvailable = (type, color) => {
+      if (!colorRestrictions[type]) return true;
+      return !colorRestrictions[type].includes(color);
+    }
+
     watch(currentLang, (newLang) => {
       document.documentElement.lang = newLang
     })
@@ -212,7 +248,9 @@ const app = createApp({
       isChecked,
       getCheckboxAttrs,
       isRareType,
-      getPikminImage
+      getPikminImage,
+      isColorAvailable,
+      getAvailableColors
     }
   },
 
@@ -301,18 +339,18 @@ const app = createApp({
                         {{ t(type) }}
                       </div>
                       <div class="w-[60px] sm:w-[70px] mx-auto bg-white/80 rounded p-1">
-                        <template v-if="getCheckedCount(type) === colors.length">
+                        <template v-if="getCheckedCount(type) === getAvailableColors(type).length">
                           <div class="text-green-600 font-bold text-sm whitespace-nowrap">
                             {{ t('completed') }}
                           </div>
                         </template>
                         <template v-else>
                           <div class="text-xs sm:text-sm text-gray-500 text-center mb-1">
-                            {{ getCheckedCount(type) }}/{{ colors.length }}
+                            {{ getCheckedCount(type) }}/{{ getAvailableColors(type).length }}
                           </div>
                           <div class="w-full h-1.5 bg-gray-200 rounded-full">
                             <div class="h-full bg-green-500 rounded-full transition-all duration-300"
-                                 :style="{ width: (getCheckedCount(type) / colors.length * 100) + '%' }">
+                                 :style="{ width: (getCheckedCount(type) / getAvailableColors(type).length * 100) + '%' }">
                             </div>
                           </div>
                         </template>
@@ -322,14 +360,15 @@ const app = createApp({
                 </td>
                 <td v-for="color in colors" :key="color" 
                     class="px-1 sm:px-2 py-3 border-b text-center w-[48px] sm:w-[60px]">
-                <input type="checkbox" 
-                        v-bind="getCheckboxAttrs(color, type)"
-                        @change="updateCheckbox(type, color)"
-                        :class="[
-                            'w-5 h-5 sm:w-6 sm:h-6 rounded-lg transition-transform duration-200 hover:scale-110 cursor-pointer',
-                            color === 'white' ? 'border-2 border-gray-300' : '',
-                            color === 'gray' ? 'bg-gray-600 border-gray-700 ring-1 ring-white/50' : ''
-                        ]">
+                  <input v-if="isColorAvailable(type, color)"
+                         type="checkbox" 
+                         v-bind="getCheckboxAttrs(color, type)"
+                         @change="updateCheckbox(type, color)"
+                         :class="[
+                             'w-5 h-5 sm:w-6 sm:h-6 rounded-lg transition-transform duration-200 hover:scale-110 cursor-pointer',
+                             color === 'white' ? 'border-2 border-gray-300' : '',
+                             color === 'gray' ? 'bg-gray-600 border-gray-700 ring-1 ring-white/50' : ''
+                         ]">
                 </td>
             </tr>
             </tbody>
