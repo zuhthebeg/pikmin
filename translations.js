@@ -7,7 +7,8 @@ const translations = {
       searchPlaceholder: '피크민 종류 검색...',
       completed: '수집완료!🎉',
       total: '합계',
-      types: '종류'
+      types: '종류',
+      checked: '개 수집됨'
     },
     categories: {
       type: '종류',
@@ -107,7 +108,8 @@ const translations = {
       searchPlaceholder: 'Search Pikmin types...',
       completed: 'Completed!🎉',
       total: 'Total',
-      types: 'Types'
+      types: 'Types',
+      checked: 'collected'
     },
     categories: {
       type: 'Type',
@@ -207,7 +209,8 @@ const translations = {
       searchPlaceholder: 'ピクミンタイプを検索...',
       completed: '完了!🎉',
       total: '合計',
-      types: 'タイプ'
+      types: 'タイプ',
+      checked: '個数集まりました'
     },
     categories: {
       type: 'タイプ',
@@ -301,13 +304,14 @@ const translations = {
   },
   'zh-CN': {
     common: {
-      title: '皮克敏布鲁姆追踪器',
+      title: '皮克敏布鲁姆���踪器',
       resetButton: '重置',
       resetConfirm: '确定要重置所有复选框吗？\n此操作无法撤消。',
       searchPlaceholder: '搜索皮克敏类型...',
       completed: '完成!🎉',
       total: '总计',
-      types: '类型'
+      types: '类型',
+      checked: '个数集齐了'
     },
     categories: {
       type: '类型',
@@ -407,7 +411,8 @@ const translations = {
       searchPlaceholder: '搜尋皮克敏類型...',
       completed: '完成!🎉',
       total: '總計',
-      types: '類型'
+      types: '類型',
+      checked: '個數集齊了'
     },
     categories: {
       type: '類型',

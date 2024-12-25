@@ -335,6 +335,11 @@ const app = createApp({
       document.documentElement.lang = currentLang.value
     })
 
+    // totalChecked computed 속성 추가
+    const totalChecked = computed(() => {
+        return Object.values(totals.value).reduce((sum, count) => sum + count, 0)
+    })
+
     return {
       currentLang,
       translations,
@@ -364,6 +369,7 @@ const app = createApp({
       scrollToType,
       highlightedType,
       scrollToTop,
+      totalChecked,
     }
   },
 
@@ -401,20 +407,6 @@ const app = createApp({
       </header>
 
       <main class="container mx-auto px-2 sm:px-4 py-4">
-        <div class="flex justify-end mb-2">
-          <select v-model="currentLang" 
-                  @change="changeLanguage(currentLang)"
-                  class="text-gray-700 border border-gray-300 rounded-lg px-2 py-1 text-sm
-                         hover:border-green-500 transition-all cursor-pointer bg-white
-                         focus:outline-none focus:ring-1 focus:ring-green-500">
-            <option value="ko">한국어</option>
-            <option value="en">English</option>
-            <option value="ja">日本語</option>
-            <option value="zh-CN">简体中文</option>
-            <option value="zh-TW">繁體中文</option>
-          </select>
-        </div>
-
         <div class="flex flex-wrap gap-2 mb-4 max-w-xl mx-auto">
           <button
             v-for="[imageUrl, types] in imageGroups"
@@ -433,6 +425,18 @@ const app = createApp({
               class="w-6 h-6 object-contain"
             >
           </button>
+          
+          <select v-model="currentLang" 
+                  @change="changeLanguage(currentLang)"
+                  class="w-[120px] text-gray-700 border border-gray-300 rounded-lg px-2 py-1 text-sm
+                         hover:border-green-500 transition-all cursor-pointer bg-white
+                         focus:outline-none focus:ring-1 focus:ring-green-500">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="zh-TW">繁體中文</option>
+          </select>
         </div>
 
         <div class="relative max-w-xl mx-auto mb-4">
@@ -528,7 +532,7 @@ const app = createApp({
             <tr class="font-bold">
                 <td class="px-2 sm:px-4 py-3">
                 {{ t('total') }}
-                <div class="text-xs sm:text-sm text-gray-500">{{ totalTypes }} {{ t('types') }}</div>
+                <div class="text-xs sm:text-sm text-gray-500">{{ totalChecked }} {{ t('checked') }}</div>
                 </td>
                 <td v-for="color in colors" :key="color" 
                     class="px-2 sm:px-4 py-3 text-center text-base sm:text-lg">
@@ -539,7 +543,7 @@ const app = createApp({
         </table>
         </div>
 
-        <div class="text-right mt-2 pr-2">
+        <div class="text-left mt-2 pl-2">
           <a href="#" 
              @click.prevent="resetAll"
              class="text-sm text-gray-500 hover:text-red-500 transition-colors">
