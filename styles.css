@@ -14,18 +14,22 @@ header {
 }
 
 header select {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  padding: 0.5rem;
-  border-radius: 4px;
-  border: 1px solid #fff;
   background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
+  font-size: 0.875rem;
+  padding: 2px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+header select:hover {
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 header select option {
-  background: #fff;
+  background: white;
   color: #333;
 }
 
@@ -257,10 +261,10 @@ input[data-type^="gray-"]:checked {
   }
   
   header select {
-    position: relative;
-    top: 0;
+    position: absolute;
     right: 0;
-    margin-bottom: 1rem;
+    bottom: -2px; /* 약간 아래로 조정 */
+    font-size: 0.85rem;
   }
   
   th:first-child {
@@ -325,7 +329,7 @@ input[data-type^="gray-"]:checked {
   }
 }
 
-/* 완료된 줄의 스타일 */
+/* 완료 줄의 스타일 */
 tr.completed {
   background-color: #e8f5e9;  /* 연한 초록색 배경 */
   transition: background-color 0.3s ease;  /* 부드러운 전환 효과 */
@@ -539,4 +543,61 @@ tfoot tr {
 .location-info .text-sm {
   word-break: break-word;
   hyphens: auto;
+}
+
+/* 헤더 영역 높이 축소 */
+header {
+  padding: 1rem 0;
+}
+
+/* 검색 입력창 크기 조정 */
+.search-input {
+  height: 40px;
+  font-size: 0.95rem;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  header {
+    padding: 0.75rem 0;
+  }
+  
+  header select {
+    font-size: 0.85rem;
+    padding: 2px 6px;
+  }
+  
+  .search-input {
+    height: 36px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 언어 선택 스타일 수정 */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 1em;
+  padding-right: 2rem;
+}
+
+/* 다크모드 대응 */
+@media (prefers-color-scheme: dark) {
+  select {
+    background-color: #2d2d2d;
+    color: #fff;
+    border-color: #4a5568;
+  }
+  
+  select:hover {
+    border-color: #68d391;
+  }
+  
+  select option {
+    background-color: #2d2d2d;
+    color: #fff;
+  }
 }

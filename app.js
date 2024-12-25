@@ -272,48 +272,40 @@ const app = createApp({
   template: `
     <div class="min-h-screen bg-gradient-to-b from-blue-50 to-green-50">
       <header class="bg-gradient-to-r from-green-600 to-green-700 shadow-lg relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-          <div class="absolute top-0 left-0 w-16 h-16 bg-white rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-          <div class="absolute top-1/2 right-1/4 w-8 h-8 bg-white rounded-full"></div>
-        </div>
-        
-        <div class="container mx-auto px-4 py-4 sm:py-6 relative">
-          <div class="relative flex flex-col items-center">
-            <select v-model="currentLang" 
-                    @change="changeLanguage(currentLang)"
-                    class="absolute right-0 top-0 w-32 bg-transparent border-2 border-white/50 
-                           text-white rounded-xl px-3 py-1 backdrop-blur-sm hover:border-white 
-                           transition-all text-center text-sm">
-              <option value="ko">한국어</option>
-              <option value="en">English</option>
-              <option value="ja">日本語</option>
-              <option value="zh-CN">简体中文</option>
-              <option value="zh-TW">繁體中文</option>
-            </select>
-            <h1 class="text-2xl sm:text-4xl font-bold text-white text-center drop-shadow-lg mt-12 sm:mt-0">
-              {{ t('title') }}
-            </h1>
-          </div>
+        <div class="container mx-auto px-4 py-3">
+          <h1 class="text-2xl sm:text-3xl font-bold text-white text-center drop-shadow-lg">
+            {{ t('title') }}
+          </h1>
         </div>
       </header>
 
-      <main class="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
-        <div class="flex flex-col sm:flex-row gap-3 mb-6">
-          <div class="relative flex-1">
-            <input type="text" 
-                   v-model="searchTerm" 
-                   :placeholder="t('searchPlaceholder')"
-                   class="w-full px-4 py-3 border-2 border-green-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 pl-12">
-            <span class="absolute left-4 top-1/2 -translate-y-1/2 text-green-500">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
-              </svg>
-            </span>
-          </div>
-          <button @click="resetAll" 
-                  class="px-6 py-3 bg-red-500 text-white rounded-xl hover:bg-red-600 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl active:scale-95">
-            {{ t('resetButton') }}
-          </button>
+      <main class="container mx-auto px-2 sm:px-4 py-4">
+        <div class="flex justify-end mb-2">
+          <select v-model="currentLang" 
+                  @change="changeLanguage(currentLang)"
+                  class="text-gray-700 border border-gray-300 rounded-lg px-2 py-1 text-sm
+                         hover:border-green-500 transition-all cursor-pointer bg-white
+                         focus:outline-none focus:ring-1 focus:ring-green-500">
+            <option value="ko">한국어</option>
+            <option value="en">English</option>
+            <option value="ja">日本語</option>
+            <option value="zh-CN">简体中文</option>
+            <option value="zh-TW">繁體中文</option>
+          </select>
+        </div>
+
+        <div class="relative max-w-xl mx-auto mb-4">
+          <input type="text" 
+                 v-model="searchTerm" 
+                 :placeholder="t('searchPlaceholder')"
+                 class="w-full px-4 py-2 border-2 border-green-200 rounded-xl 
+                        focus:ring-2 focus:ring-green-500 focus:border-green-500 
+                        transition-all duration-300 pl-10">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-green-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+            </svg>
+          </span>
         </div>
 
         <div class="overflow-y-auto overflow-x-auto h-full">
@@ -399,6 +391,14 @@ const app = createApp({
             </tr>
             </tfoot>
         </table>
+        </div>
+
+        <div class="text-right mt-2 pr-2">
+          <a href="#" 
+             @click.prevent="resetAll"
+             class="text-sm text-gray-500 hover:text-red-500 transition-colors">
+            {{ t('resetButton') }}
+          </a>
         </div>
       </main>
     </div>
