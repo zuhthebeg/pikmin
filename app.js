@@ -189,6 +189,8 @@ const app = createApp({
         'electronics4': 'Electronics.png',
         'electronics5': 'Electronics.png',
         'electronics6': 'Electronics.png',
+        'fairyLights1': 'Electronics.png',
+        'fairyLights2': 'Electronics.png',
         'curryrestaurant': 'Curry.png',
         'hardwarestore': 'HardwareStore.png',
         'university': 'University.png',
