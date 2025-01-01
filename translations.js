@@ -414,13 +414,13 @@ const translations = {
   'zh-TW': {
     common: {
       title: '皮克敏追蹤器',
-      resetButton: '重置',
-      resetConfirm: '確定要重置所有複選框嗎？\n此操作無法撤消。',
+      resetButton: '全部重置',
+      resetConfirm: '確定要重置所有複選框嗎？\n重置後無法復原。',
       searchPlaceholder: '搜尋皮克敏類型...',
       completed: '完成!🎉',
       total: '總計',
       types: '類型',
-      checked: '個數集齊了'
+      checked: '集齊'
     },
     categories: {
       type: '類型',
