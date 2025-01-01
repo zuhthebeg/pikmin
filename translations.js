@@ -93,11 +93,13 @@ const translations = {
       halloweenLamp: '할로윈 조명',
       anniversarySnack: '1주년 기념 간식',
       mittens: '손모아장갑',
+      glass2024: '2024 안경',
       puzzle: '2021가을의 추억 퍼즐',
       autumnSticker: '가을 스티커',
       winterSticker: '겨울 스티커',
       anniversaryCake: '3주년 기념 케이크',
-      decorationBall: '방울 장식'
+      decorationBall: '방울 장식',
+      partyPopper2025: '2025 폭죽'
     }
   },
   en: {
@@ -194,11 +196,13 @@ const translations = {
       halloweenLamp: 'Halloween Light',
       anniversarySnack: '1st Anniversary Snack',
       mittens: 'Mittens',
+      glass2024: '2024 Glasses',
       puzzle: '2021 Autumn Memory Puzzle',
       autumnSticker: 'Autumn Sticker',
       winterSticker: 'Winter Sticker',
       anniversaryCake: '3rd Anniversary Cake',
-      decorationBall: 'Decoration Ball'
+      decorationBall: 'Decoration Ball',
+      partyPopper2025: '2025 party Popper'
     }
   },
   ja: {
@@ -295,16 +299,18 @@ const translations = {
       halloweenLamp: 'ハロウィンライト',
       anniversarySnack: '1周年記念スナック',
       mittens: 'ミトン',
+      glass2024: '2024 メガネ',
       puzzle: '2021年秋の思い出パズル',
       autumnSticker: '秋のステッカー',
       winterSticker: '冬のステッカー',
       anniversaryCake: '3周年記念ケーキ',
-      decorationBall: '装飾ボール'
+      decorationBall: '装飾ボール',
+      partyPopper2025: '2025 パーティクラッカー' 
     }
   },
   'zh-CN': {
     common: {
-      title: '皮克敏布鲁姆���踪器',
+      title: '皮克敏追踪器',
       resetButton: '重置',
       resetConfirm: '确定要重置所有复选框吗？\n此操作无法撤消。',
       searchPlaceholder: '搜索皮克敏类型...',
@@ -396,16 +402,18 @@ const translations = {
       halloweenLamp: '万圣节灯',
       anniversarySnack: '一周年纪念零食',
       mittens: '连指手套',
+      glass2024: '2024 眼镜',
       puzzle: '2021年秋天回忆拼图',
       autumnSticker: '秋季贴纸',
       winterSticker: '冬季贴纸',
       anniversaryCake: '三周年纪念蛋糕',
-      decorationBall: '装饰球'
+      decorationBall: '装饰球',
+      partyPopper2025: '2025 鞭炮' 
     }
   },
   'zh-TW': {
     common: {
-      title: '皮克敏布魯姆追蹤器',
+      title: '皮克敏追蹤器',
       resetButton: '重置',
       resetConfirm: '確定要重置所有複選框嗎？\n此操作無法撤消。',
       searchPlaceholder: '搜尋皮克敏類型...',
@@ -497,11 +505,13 @@ const translations = {
       halloweenLamp: '萬聖節燈',
       anniversarySnack: '一週年零食',
       mittens: '連指手套',
+      glass2024: '2024 眼鏡',
       puzzle: '拼圖 - 2021年秋天回憶',
       autumnSticker: '秋季貼紙',
       winterSticker: '冬季貼紙',
       anniversaryCake: '三周年蛋糕',
-      decorationBall: '裝飾球'
+      decorationBall: '裝飾球',
+      partyPopper2025: '2025 派對拉炮' 
     }
   }
 }
