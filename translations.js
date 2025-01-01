@@ -8,7 +8,7 @@ const translations = {
       completed: '수집완료!🎉',
       total: '합계',
       types: '종류',
-      checked: '개 수집됨'
+      checked: '개 수집'
     },
     categories: {
       type: '종류',
